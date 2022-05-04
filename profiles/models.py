@@ -6,3 +6,4 @@ class Profile(models.Model):
     first_name = models.TextField()
     last_name = models.TextField()
     student_number = models.TextField()
+    gender = models.TextField()

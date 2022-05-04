@@ -7,3 +7,5 @@ class Profile(models.Model):
     last_name = models.TextField()
     student_number = models.TextField()
     gender = models.TextField()
+    study_program = models.TextField()
+    age = models.IntegerField()

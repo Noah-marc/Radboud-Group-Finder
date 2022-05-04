@@ -2,10 +2,16 @@ from django.db import models
 
 # Create your models here.
 
+
 class Profile(models.Model):
-    first_name = models.TextField()
-    last_name = models.TextField()
-    student_number = models.TextField()
-    gender = models.TextField()
-    study_program = models.TextField()
+    firstName = models.TextField()
+    lastName = models.TextField()
+    studentNumber = models.TextField()
+    studyProgram = models.TextField()
     age = models.IntegerField()
+    #gender = models.TextField()
+    class GenderType(models.TextChoices): 
+        MALE = "m", "male"
+        FEMALE = "f", "female"
+        OTHERS = "o", "other"
+    gender = models.CharField(max_length = 1, choices = GenderType.choices, default = GenderType.MALE )

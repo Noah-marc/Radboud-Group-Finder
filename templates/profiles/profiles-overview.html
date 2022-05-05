@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<form>
+    <input type = 'text' />
+    <input type = 'submit' />
+</form>
+<ul>{% for x in profile_obj_list %}
+    <li>{{ x.firstName }}-{{x.lastName}}-{{x.studentNumber}}-{{x.studyProgram}}-{{x.age}}-{{x.gender}} Here has to be added a button that leads to the profile</li>
+</ul> {% endfor %}
+{% endblock content%}

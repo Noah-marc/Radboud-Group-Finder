@@ -9,7 +9,6 @@ class Profile(models.Model):
     studentNumber = models.TextField()
     studyProgram = models.TextField()
     age = models.IntegerField()
-    #gender = models.TextField()
     class GenderType(models.TextChoices): 
         MALE = "m", "male"
         FEMALE = "f", "female"

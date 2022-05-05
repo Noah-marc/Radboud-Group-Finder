@@ -10,7 +10,7 @@ def home_view(request, *args, **kwargs):
     Take in a request (Django sends requests by default)"
     Retrun HTML as a response (Chosen by us)
     """
-    student = Profile.objects.get(id  = 1)
+    student = Profile.objects.get(id = 1)
     student_queryset = Profile.objects.all()
 
     context = {

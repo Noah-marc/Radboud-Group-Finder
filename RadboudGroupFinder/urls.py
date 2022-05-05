@@ -21,7 +21,8 @@ from .views import home_view
 
 urlpatterns = [
     path('', home_view), #home/ root page
-    path('profiles/overview/', views.profile_overview_view),
-    path('profiles/<int:id>/', views.profile_details_view),
+    path('profiles/', views.profile_overview_view),
+    path('profiles/details/',views.profile_search_view ),
+    path('profiles/details/<int:id>/', views.profile_details_view),
     path('admin/', admin.site.urls),
 ]

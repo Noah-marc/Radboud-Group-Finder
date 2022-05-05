@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Search results </h1>
+<li>{{ student_obj.firstName }}-{{student_obj.lastName}}-{{student_obj.studyProgram}} <a href = '{{student_obj.id}}/'> view profile</a></li>
+{% endblock content %}

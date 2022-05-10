@@ -23,6 +23,7 @@ urlpatterns = [
     path('', home_view), #home/ root page
     path('profiles/', views.profile_overview_view),
     path('profiles/details/',views.profile_search_view ),
+    path('profiles/details/create/', views.profile_create_view),
     path('profiles/details/<int:id>/', views.profile_details_view),
     path('admin/', admin.site.urls),
 ]

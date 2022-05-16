@@ -43,4 +43,4 @@ def profile_create_view(request):
         student = Profile.objects.create(firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
         context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
         context ['created'] = True
-    return render(request, "create-profile.html", context=context)
+    return render(request, "create-profile.html", context=context) # test cock

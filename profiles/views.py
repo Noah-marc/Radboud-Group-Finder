@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import Profile
 
-# Create your views here test test2.
+# Create your views here. bruh
 
 def profile_details_view(request, id = None, *args, **kwargs): 
     student = None
@@ -43,8 +43,4 @@ def profile_create_view(request):
         student = Profile.objects.create(firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
         context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
         context ['created'] = True
-<<<<<<< HEAD
-    return render(request, "create-profile.html", context=context) # test cock
-=======
-    return render(request, "create-profile.html", context=context)
->>>>>>> 95922b44542274f44cd1c11ff779638b07e0946a
+    return render(request, "create-profile.html", context=context) 

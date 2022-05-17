@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 from .models import Profile
 
-# Create your views here.
+# Create your views here test.
 
 def profile_details_view(request, id = None, *args, **kwargs): 
     student = None

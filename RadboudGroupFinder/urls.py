@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from groups import views
 from profiles import views
 from .views import home_view
 

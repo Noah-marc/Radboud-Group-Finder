@@ -1,4 +1,5 @@
 from django.db import models
+from groups import models as groupsModels
 
 # Create your models here.
 
@@ -14,3 +15,5 @@ class Profile(models.Model):
         FEMALE = "f", "female"
         OTHERS = "o", "other"
     gender = models.CharField(max_length = 1, choices = GenderType.choices, default = GenderType.MALE )
+    groups = models.ManyToManyField(groupsModels.Groups, related_name="profiles")
+    

@@ -4,4 +4,5 @@ from django.db import models
 
 class Groups(models.Model):
     groupName = models.TextField()
+    groupSize = models.IntegerField()
     groupCourse = models.TextField()

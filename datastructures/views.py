@@ -50,6 +50,10 @@ def profile_create_view(request):
 def test(request):
     context = {}
     return render(request, "test.html", context=context)
+
+def sidebar_view(request):
+    context = {}
+    return render(request, "sidebar-test.html", context=context)
     
 def groups_overview_view(request, *args, **kwargs):
     groups_queryset = Group.objects.all()

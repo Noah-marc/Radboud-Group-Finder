@@ -16,16 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from groups import views as groupview
-from profiles import views as profileview
+from datastructures import views
 from .views import home_view
 
 urlpatterns = [
     path('', home_view), #home/ root page
-    path('profiles/', profileview.profile_overview_view),
-    path('profiles/details/', profileview.profile_search_view ),
-    path('profiles/details/create/', profileview.profile_create_view),
-    path('profiles/details/<int:id>/', profileview.profile_details_view),
-    path('groups/', groupview.groups_overview_view),
+    path('profiles/', views.profile_overview_view),
+    path('profiles/details/', views.profile_search_view ),
+    path('profiles/details/create/', views.profile_create_view),
+    path('profiles/details/<int:id>/', views.profile_details_view),
+
+    path('groups/', views.groups_overview_view),
+    path('groups/details/<int:id>/', views.groups_details_view),
+    path('groups/details/create/', views.groups_create_view),
+    
     path('admin/', admin.site.urls),
 ]

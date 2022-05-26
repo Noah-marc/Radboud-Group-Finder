@@ -3,7 +3,7 @@ views.py is for rendering html web pages
 """
 from django.http import HttpResponse
 from django.template.loader import render_to_string
-from profiles.models import Profile
+from datastructures.models import Profile
 
 def home_view(request, *args, **kwargs): 
     """

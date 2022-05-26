@@ -15,8 +15,9 @@ def home_view(request, *args, **kwargs):
 
     context = {
         "student_obj_list": student_queryset,
-        "student_obj": student, 
+        "student_obj": student,
     }
+
     #Django template
     HTML_STRING = render_to_string("home-view.html", context=context)
     return HttpResponse(HTML_STRING)

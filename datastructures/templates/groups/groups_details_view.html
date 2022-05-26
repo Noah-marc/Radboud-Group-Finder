@@ -1,5 +1,4 @@
 {% extends "base.html"%}
-
 {% block content %}
     <h1>Profile page of {{group_obj.groupName}}</h1>
         <p>Group Name: {{group_obj.groupName}}</p>
@@ -12,7 +11,9 @@
                 {{ membership.profile.lastName }}
                 s{{ membership.profile.studentNumber }}
             </li>
-            
         {% endfor %}</ul>
+        <a href="delete">Delete</a>
+        
+        
         
 {% endblock content %}

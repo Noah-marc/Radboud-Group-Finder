@@ -37,24 +37,3 @@ class Membership(models.Model):
     date_joined = models.DateField(default=datetime.date.today)
     def __str__(self):
         return (self.group.__str__() + "-" + self.profile.__str__())
-
-
-# class Profile(models.Model):
-#     firstName = models.CharField(max_length=50)
-#     def __str__(self):
-#         return self.firstName
-
-# class Group(models.Model):
-#     groupName = models.CharField(max_length=128)
-#     members = models.ManyToManyField(
-#         Profile,
-#         through='Membership',
-#     )
-#     def __str__(self):
-#         return self.groupName
-
-# class Membership(models.Model):
-#     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-#     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
-#     def __str__(self):
-#         return (self.group.__str__() + "-" + self.profile.__str__())

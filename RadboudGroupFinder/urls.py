@@ -25,9 +25,11 @@ urlpatterns = [
     path('profiles/details/', views.profile_search_view ),
     path('profiles/details/create/', views.profile_create_view),
     path('profiles/details/<int:id>/', views.profile_details_view),
+    path('test/', views.test),
 
     path('groups/', views.groups_overview_view),
     path('groups/details/<int:id>/', views.groups_details_view),
+    path('groups/details/<int:id>/delete', views.groups_delete_view),
     path('groups/details/create/', views.groups_create_view),
     
     path('admin/', admin.site.urls),

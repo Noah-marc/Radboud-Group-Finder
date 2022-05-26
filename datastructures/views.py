@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Profile
 from .models import Group
@@ -47,6 +47,10 @@ def profile_create_view(request):
         context ['created'] = True
     return render(request, "create-profile.html", context=context) 
 
+def test(request):
+    context = {}
+    return render(request, "test.html", context=context)
+    
 def groups_overview_view(request, *args, **kwargs):
     groups_queryset = Group.objects.all()
     context = {
@@ -61,10 +65,16 @@ def groups_details_view(request, id, *args, **kwargs):
     }
     return render(request, "groups/groups_details_view.html", context = context)
 
-def groups_delete_view(request, id, *args, **kwargs):
+def groups_delete_view(request, id):
     group = get_object_or_404(Group, pk=id)
-    group.delete()
-    return render(request, "")
+    if request.method == "POST":
+        group.delete()
+        print("test")
+        return redirect("/groups")
+    context = {
+        "object" : group
+    }
+    return render(request, "groups/groups_delete_view.html", context = context)
 
 def groups_create_view(request):
     context = {}

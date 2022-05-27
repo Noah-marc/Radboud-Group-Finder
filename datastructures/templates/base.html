@@ -2,10 +2,38 @@
 <!DOCTYPE html>
 <html> 
     <head>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bruh.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        
     </head>
     <body>
-        {% block content %}
-        {% endblock content %}
+        <div class="home_bar">
+            <!--Navbar-->
+                <a href = "javascript:void(0)" class = "menu_btn" onclick="openNav()"><img src="{% static 'img/menu_btn2.png' %}" alt="Menu Button"></a>
+                <a href="../"><img class = "home_img" src="{% static 'img/logo_black.png' %}" alt="Radboud Logo"></a>
+                <a class = "home_btn" href="../">Radboud Group Finder</a>
+                <a class = "notif" href="#">
+                    <img src="{% static 'img/notif_logo.png' %}">
+                </a>
+                <a  href="#"><img class = "user_logo" src="{% static 'img/account_img.png' %}" alt="profile pic"></a>
+                <a class = "user_name" href="#"> Firstname Lastname</a>
+        </div>
+
+        <div class="grid-container">
+            <div class="sidebar">
+                <img class = "sidebar_logo" src="{% static 'img/logo_white.png' %}">
+                <a href="#">Home</a>
+                <a href="#">Search group</a>
+                <a href="#">Profile</a>
+                <a href="#">Settings</a>
+            </div>
+            <div class="main-content">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+          <script src="{% static 'js/sidebar.js' %}"></script>
     </body>
 </html>

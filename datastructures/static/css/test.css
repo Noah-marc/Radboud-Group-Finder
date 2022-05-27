@@ -35,7 +35,9 @@ a:active {
 }
 
 .home_bar {
-position: absolute;
+position: fixed;
+overflow: hidden;
+z-index: 1000;
 width: 100%;
 height: 50px;
 left: 0px;
@@ -84,9 +86,9 @@ background: #FFFFFF;
 }
 
 .notif {
-  position: absolute;
-  width: 48px;
-  height: 48px;
+  position: inherit;
+  width: 50px;
+  height: 100%;
   right: 288px;
   top: 50%;
   -ms-transform: translateY(-50%);
@@ -132,11 +134,12 @@ h1 {
 .grid-container {
   width: 100%;
   margin: 0 auto;
-  height: 90vh;
+  height: 100vh;
   display: flex;
-  transition: 1s ease;
+  /* transition: 1s ease; */
   margin-left: 0;
   left: 0;
+  overflow: hidden;
 }
 
 .sidebar {
@@ -145,8 +148,32 @@ h1 {
   background-color: #630808;
   transition: 1s ease;
   position: relative;
+  z-index: 999;
   top: 50px;
   margin-left: 0px;
+}
+
+.sidebar a {
+  position: relative;
+  white-space: nowrap;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  display: block;
+  padding: 10px 5px 10px 15px;
+  color:#FFFFFF;
+  background-color: #630808;
+  transition: 1s 0.15s ease;
+}
+
+.sidebar a:first-of-type {
+  margin-top: 20px;
+}
+
+.sidebar a:hover {
+  background-color: #e3000b;
 }
 
 .main-content {
@@ -156,16 +183,22 @@ h1 {
   transition: 1s ease;
   position: relative;
   top: 50px;
-  margin-left: 0px;
+  margin-left: 0;
+  padding: 50px;
 }
 
 .main-content_large {
-  width: 95%;
+  width: 100%;
 }
 
 .sidebar_small {
   width: 91px;
 }
+
+.sidebar_small a{
+  opacity: 0;
+}
+
 
 button {
   position: absolute;

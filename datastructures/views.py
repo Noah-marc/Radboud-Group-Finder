@@ -48,7 +48,10 @@ def profile_create_view(request):
     return render(request, "create-profile.html", context=context) 
 
 def test(request):
-    context = {}
+    groups_queryset = Group.objects.all()
+    context = {
+        "groups_obj_list" : groups_queryset,
+    }
     return render(request, "test.html", context=context)
 
 def sidebar_view(request):

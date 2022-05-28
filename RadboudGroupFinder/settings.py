@@ -51,6 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'RadboudGroupFinder.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {

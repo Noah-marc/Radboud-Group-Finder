@@ -23,6 +23,31 @@ a:active {
   text-decoration: none;
 }
 
+a div {
+  text-decoration: none;
+  color: black;
+}
+
+a div:link {
+  text-decoration: none;
+  color: black;
+}
+
+a div:visited {
+  text-decoration: none;
+  color: black;
+}
+
+a div:hover {
+  text-decoration: none;
+  color: black;
+}
+
+a div:active {
+  text-decoration: none;
+  color: black;
+}
+
 .sidebar_logo {
   width: 100px;
   height: auto;
@@ -165,7 +190,7 @@ h1 {
   padding: 10px 5px 10px 15px;
   color:#FFFFFF;
   background-color: #630808;
-  transition: 1s 0.15s ease;
+  transition: 0.1s ease;
 }
 
 .sidebar a:first-of-type {
@@ -179,9 +204,10 @@ h1 {
 .main-content {
   width: 80%;
   height: 100%;
-  background-color: rgb(212, 212, 212);
+  background-color: #E1E1E1;
   transition: 1s ease;
   position: relative;
+  display: block;
   top: 50px;
   margin-left: 0;
   padding: 50px;

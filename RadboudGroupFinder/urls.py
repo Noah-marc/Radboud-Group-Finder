@@ -16,10 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-<<<<<<< HEAD
-=======
-from datastructures import views
->>>>>>> cc097d128c3fdaee8a9ef65fe329c34412a595a4
 from .views import home_view
 
 from accounts import views as account_views
@@ -28,8 +24,6 @@ from profiles import views as profile_views
 
 urlpatterns = [
     path('', home_view), #home/ root page
-<<<<<<< HEAD
-=======
     path('profiles/', views.profile_overview_view),
     path('profiles/details/', views.profile_search_view ),
     path('profiles/details/create/', views.profile_create_view),
@@ -42,7 +36,6 @@ urlpatterns = [
     path('groups/details/<int:id>/delete', views.groups_delete_view),
     path('groups/details/create/', views.groups_create_view),
     
->>>>>>> cc097d128c3fdaee8a9ef65fe329c34412a595a4
     path('admin/', admin.site.urls),
     path('login/', account_views.login_view ), 
     #Work over the profiles URLS with using redirect !

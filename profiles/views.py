@@ -37,24 +37,21 @@ def profile_search_view(request):
 
 @login_required
 def profile_create_view(request): 
-    form = ProfileForm()
+    form = ProfileForm(request.POST or NONE)
 
     context = {
         "form": form
     }
-    # clean data
-    if request.method == "POST": 
-        form = ProfileForm(request.POST)
-        if form.is_valid():
-            firstName = form.cleaned_data.get("firstName")
-            lastName = form.cleaned_data.get("lastName")
-            studentNumber = form.cleaned_data.get("studentNumber")
-            studyProgram = form.cleaned_data.get("studyProgram")
-            gender = form.cleaned_data.get("gender")
-            age = form.cleaned_data.get("age")
-            student = Profile.objects.create(firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
-            context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
-            context ['created'] = True
+    if form.is_valid():
+        firstName = form.cleaned_data.get("firstName")
+        lastName = form.cleaned_data.get("lastName")
+        studentNumber = form.cleaned_data.get("studentNumber")
+        studyProgram = form.cleaned_data.get("studyProgram")
+        gender = form.cleaned_data.get("gender")
+        age = form.cleaned_data.get("age")
+        student = Profile.objects.create(firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
+        context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
+        context ['created'] = True
     return render(request, "profiles/create-profile.html", context = context)
 
 # @login_required

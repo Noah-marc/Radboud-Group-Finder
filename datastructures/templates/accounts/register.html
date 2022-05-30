@@ -5,7 +5,7 @@
 
 {% if not request.user.is_authenticated %}
     <div> 
-        <form method = 'POST'> {% csrf_token}
+        <form method = 'POST'> {% csrf_token %}
                 {{form.as_p }}
                 <button type = 'submit'> Register</button>
         </form>

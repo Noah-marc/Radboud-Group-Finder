@@ -32,5 +32,6 @@ urlpatterns = [
     path('groups/details/<int:id>/delete', views.groups_delete_view),
     path('groups/details/create/', views.groups_create_view),
     
+    
     path('admin/', admin.site.urls),
 ]

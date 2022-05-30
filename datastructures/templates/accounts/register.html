@@ -5,9 +5,9 @@
 
 {% if not request.user.is_authenticated %}
     <div> 
-        <form method = 'POST'> {% csrf_token %}
-                {{form.as_p }}
-                <button type = 'submit'> Register</button>
+        <form method = 'POST'>{% csrf_token %}
+            {{form.as_p }}
+            <button type = 'submit'> Register</button>
         </form>
         <p>Already have an account? Then <a href = '/login/'> login </a>  </p>
     </div>

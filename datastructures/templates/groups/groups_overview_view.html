@@ -35,9 +35,13 @@
         {% endfor %}
     </div>
     {% if x.membership_set.all.count < x.groupSize %}
-        {% for y in x.groupSize|add:"-x.membership_set.all.count" %}
-            Open Spot<br>
+        <p>bruh</p>
+        {% with ''|center:x.groupSize as range %}
+        {% for y in range %}
+            <p>Open spot</p>
         {% endfor %}
+        {% endwith %}
+        
     {% endif %}
 </div></a>
     {% endfor %}

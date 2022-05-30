@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-
+import datetime
 from .models import Profile
 from .models import Group
 from .models import Membership
@@ -54,10 +54,6 @@ def test(request):
     }
     return render(request, "test.html", context=context)
 
-def sidebar_view(request):
-    context = {}
-    return render(request, "sidebar-test.html", context=context)
-    
 def groups_overview_view(request, *args, **kwargs):
     groups_queryset = Group.objects.all()
     context = {
@@ -83,13 +79,36 @@ def groups_delete_view(request, id):
     }
     return render(request, "groups/groups_delete_view.html", context = context)
 
-def groups_create_view(request):
+def groups_create_view(request, id):
     context = {}
     if request.method == "POST":
+        date_joined = datetime.date.today
         groupName = request.POST.get("Group Name")
-        groupCourse = request.POST.get("Group Course")
-        group = Group.objects.create(groupName = groupName, groupCourse = groupCourse)
-        context ['group_obj'] = group
-        context ['created'] = True
-
+        course = request.POST.get("Group Course")
+        groupSize = request.POST.get("Group Size")
+        group = Group.objects.create(groupName = groupName, course = course, groupSize = groupSize,)
+        profile = get_object_or_404(Profile, pk=id)
+        date_joined = datetime.date.today
+        group_joined = True
+        owner = Membership.objects.create(profile = profile, group = group, date_joined = date_joined, group_joined = group_joined)
+        context = {
+            "group_obj" : group,
+            "owner_obj" : owner,
+            "created" : True
+        } 
     return render(request, "", context=context)
+
+def join_view(request, id, gid):
+    profile = get_object_or_404(Profile, pk=id)
+    group = get_object_or_404(Group, pk=gid)
+    if request.method == "POST":
+       if profile.studyProgram == group.groupCourse:
+          date_joined = datetime.date.today
+          group_joined = True
+          membership = Membership.objects.create(profile = profile, group = group, date_joined = date_joined, group_joined = group_joined)
+          context = {
+              "membership_obj" : membership
+          }
+    return render(request, "", context=context)
+
+

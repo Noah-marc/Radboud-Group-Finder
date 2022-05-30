@@ -19,7 +19,7 @@ from django.urls import path
 from .views import home_view
 
 from accounts import views as account_views
-from profiles import views as profile_views
+
 
 
 urlpatterns = [

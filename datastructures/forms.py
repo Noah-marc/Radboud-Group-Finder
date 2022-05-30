@@ -21,7 +21,7 @@ class ProfileForm(forms.Form):
 
 
     #!!!!!!!!!!!!!!!temporary function, replace by correct cleaning functions later on !!!!!!!!!!!!!!!!
-    def clean(self): 
+    def clean_title(self): 
         cleaned_data = self.cleaned_data # this is a dictionary, containing cleaned data for all fileds in ProfileForm
         return cleaned_data
 

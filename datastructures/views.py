@@ -1,4 +1,3 @@
-<<<<<<< HEAD:profiles/views.py
 from pickle import NONE
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
@@ -6,13 +5,11 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile
 from .forms import ProfileForm
 
-=======
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Profile
 from .models import Group
 from .models import Membership
->>>>>>> cc097d128c3fdaee8a9ef65fe329c34412a595a4:datastructures/views.py
 
 # Create your views here. bruh
 
@@ -52,7 +49,6 @@ def profile_create_view(request):
     }
     # clean data
     if request.method == "POST": 
-<<<<<<< HEAD:profiles/views.py
         form = ProfileForm(request.POST)
         if form.is_valid():
             firstName = form.cleaned_data.get("firstName")
@@ -83,17 +79,7 @@ def profile_create_view(request):
      #   context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
      #   context ['created'] = True
    # return render(request, "profiles/create-profile.html", context = context)
-=======
-        firstName = request.POST.get("First Name")
-        lastName = request.POST.get("Last Name")
-        studentNumber = request.POST.get("Student Number")
-        studyProgram = request.POST.get("Study program")
-        gender = request.POST.get("Gender")
-        age = request.POST.get("Age")
-        student = Profile.objects.create(firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
-        context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
-        context ['created'] = True
-    return render(request, "create-profile.html", context=context) 
+        
 
 def test(request):
     groups_queryset = Group.objects.all()
@@ -141,4 +127,3 @@ def groups_create_view(request):
         context ['created'] = True
 
     return render(request, "", context=context)
->>>>>>> cc097d128c3fdaee8a9ef65fe329c34412a595a4:datastructures/views.py

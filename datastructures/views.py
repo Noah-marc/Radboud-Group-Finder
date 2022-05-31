@@ -1,5 +1,4 @@
 from pickle import NONE
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from .models import Profile
@@ -106,7 +105,6 @@ def groups_delete_view(request, id):
     group = get_object_or_404(Group, pk=id)
     if request.method == "POST":
         group.delete()
-        print("test")
         return redirect("/groups")
     context = {
         "object" : group
@@ -130,13 +128,13 @@ def groups_create_view(request, id):
             "owner_obj" : owner,
             "created" : True
         } 
-    return render(request, "", context=context)
+    return render(request, "groups_create_view.html", context=context)
 
 def join_view(request, id, gid):
     profile = get_object_or_404(Profile, pk=id)
     group = get_object_or_404(Group, pk=gid)
     if request.method == "POST":
-       if profile.studyProgram == group.groupCourse:
+       if profile.course == group.groupCourse:
           date_joined = datetime.date.today
           group_joined = True
           membership = Membership.objects.create(profile = profile, group = group, date_joined = date_joined, group_joined = group_joined)

@@ -1,13 +1,24 @@
 import datetime
+from statistics import mode
 from tokenize import group
 from django.db import models
+from multiselectfield import MultiSelectField
 
+COURSE_CHOICES = (
+    ("Calculus and Probability Theory", "Calculus and Probability Theory"),
+    ("Hacking in C", "Hacking in C"),
+)
+STUDYPROGRAM_CHOICES = (
+    ("Computing Science", "Computing Science"),
+    ("Mathematics", "Mathematics"),
+)
 # Create your models here.
 class Profile(models.Model):
+    course = MultiSelectField(choices=COURSE_CHOICES, default="")
     firstName = models.TextField()
     lastName = models.TextField()
     studentNumber = models.TextField()
-    studyProgram = models.TextField()
+    studyProgram = models.CharField(max_length = 100, choices = STUDYPROGRAM_CHOICES, default = "")
     age = models.IntegerField()
     class GenderType(models.TextChoices): 
         MALE = "m", "male"
@@ -23,11 +34,7 @@ class Group(models.Model):
     groupSize = models.IntegerField(default=4)
     groupDescription = models.CharField(max_length=500, default = '')
     members = models.ManyToManyField(Profile, through='Membership', through_fields=('group', 'profile')) 
-    class groupCourse(models.TextChoices):
-        NONE = "", "None"
-        CALCULUS = "CaPT", "Calculus"
-        HACKING = "HiC", "Hacking in C"
-    course = models.CharField(max_length=10, choices=groupCourse.choices, default= groupCourse.NONE)
+    course = models.CharField(max_length=100, choices=COURSE_CHOICES, default= "")
     def __str__(self):
         return self.groupName
 
@@ -37,5 +44,3 @@ class Membership(models.Model):
     date_joined = models.DateField(default=datetime.date.today)
     def __str__(self):
         return (self.group.__str__() + "-" + self.profile.__str__())
-    # group_joined = models.BooleanField(required=False)
-

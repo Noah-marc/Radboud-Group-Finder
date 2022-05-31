@@ -1,0 +1,51 @@
+.group {
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    width: 240px;
+    height: 377px;
+    top:35px;
+    float: left;
+    margin-right: 20px;
+    
+    background-color: #FFF;
+    border: 3px solid #730E04;
+    border-radius: 10px;
+    font-family: 'Montserrat';
+}
+
+.group_img {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.group_name {
+    text-align: center;
+    font-style: normal;
+    font-weight: 200;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.border {
+    position: absolute;
+    left: 15px;
+    width: 200px;
+    height: 0px;
+    border: 1px solid #730E04;
+}
+
+.group_course {
+    text-align: center;
+    font-size: 16px;
+}
+
+.group_desc {
+    margin: 20px;
+    font-size: 14px;
+}
+

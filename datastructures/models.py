@@ -37,3 +37,5 @@ class Membership(models.Model):
     date_joined = models.DateField(default=datetime.date.today)
     def __str__(self):
         return (self.group.__str__() + "-" + self.profile.__str__())
+    # group_joined = models.BooleanField(required=False)
+

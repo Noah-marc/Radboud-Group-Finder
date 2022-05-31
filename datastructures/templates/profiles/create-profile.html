@@ -1,0 +1,23 @@
+{% extends "base.html"%}
+
+<! -- this html form has to be changed, such that one uses the fields specified in the 'profile' model. Before that we want a working login flow tho,
+such that not everyone can just change it -->
+
+{%block content%}
+{% if not created %}
+    
+<h1>Create your profile</h1>
+<div style = 'margin-top:30px;'></div>
+    <form action ='.' method="POST">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type = 'submit' > Create profile</button>
+    </form>
+</div>
+{% else %}
+<p> The profile was created</p>
+<a href = '{{student_obj.id}}/'> view profile</a>
+{% endif %}
+
+
+{%endblock content%}

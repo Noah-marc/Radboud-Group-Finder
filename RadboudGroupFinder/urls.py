@@ -16,16 +16,36 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from groups import views as groupview
-from profiles import views as profileview
 from .views import home_view
+from datastructures import views
+
+from accounts import views as account_views
+
+
 
 urlpatterns = [
     path('', home_view), #home/ root page
-    path('profiles/', profileview.profile_overview_view),
-    path('profiles/details/', profileview.profile_search_view ),
-    path('profiles/details/create/', profileview.profile_create_view),
-    path('profiles/details/<int:id>/', profileview.profile_details_view),
-    path('groups/', groupview.groups_overview_view),
+    path('profiles/', views.profile_overview_view),
+    path('profiles/details/', views.profile_search_view ),
+    path('profiles/details/create/', views.profile_create_view),
+    path('profiles/details/<int:id>/', views.profile_details_view),
+    path('test/', views.test),
+    path('sidebar/', views.sidebar_view),
+
+    path('groups/', views.groups_overview_view),
+    path('groups/details/<int:id>/', views.groups_details_view),
+    path('groups/details/<int:id>/delete', views.groups_delete_view),
+    path('groups/details/create/', views.groups_create_view),
+    
     path('admin/', admin.site.urls),
+    path('login/', account_views.login_view ), 
+    #Work over the profiles URLS with using redirect !
+    path('profiles/', views.profile_overview_view),
+    path('profiles/details/', views.profile_search_view ),
+    path('profiles/details/create/', views.profile_create_view),
+    path('profiles/details/<int:id>/', views.profile_details_view),
+    #Work over profiles URLS with using redirect!
+    path('logout/', account_views.logout_view),
+    path('register/', account_views.register_view),
+    # path ('accounts/', include('django.contrib.auth.urls')) --> maybe use this to spare creating all the paths by onself
 ]

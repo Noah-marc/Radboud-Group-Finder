@@ -7170,3 +7170,5 @@ Lib/site-packages/pytz-2022.1.dist-info/WHEEL
 Lib/site-packages/pytz-2022.1.dist-info/zip-safe
 Scripts/django-admin.py
 Scripts/__pycache__/django-admin.cpython-310.pyc
+db.sqlite3
+db.sqlite3

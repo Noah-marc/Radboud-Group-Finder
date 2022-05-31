@@ -28,21 +28,15 @@
     <div class = "group_desc">{{x.groupDescription}}</div>
     
 
-    <div>
+    <!-- <div>
         {% for membership in x.membership_set.all %}
         {{ membership.profile.firstName }}
         {{ membership.profile.lastName }}    
         {% endfor %}
+    </div> -->
+    <div class = "group_size">
+        {{x.membership_set.all.count}}/{{x.groupSize}}
     </div>
-    {% if x.membership_set.all.count < x.groupSize %}
-        <p>bruh</p>
-        {% with ''|center:x.groupSize as range %}
-        {% for y in range %}
-            <p>Open spot</p>
-        {% endfor %}
-        {% endwith %}
-        
-    {% endif %}
 </div></a>
     {% endfor %}
 

@@ -3,10 +3,10 @@
 <html> 
     <head>
         <link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/groups_overview_view.css' %}"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-        
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">        
     </head>
     <body>
         <div class="home_bar">
@@ -24,11 +24,11 @@
         <div class="grid-container">
             <div class="sidebar">
                 <img class = "sidebar_logo" src="{% static 'img/logo_white.png' %}">
-                <a href="#">Home</a>
-                <a href="#">Search group</a>
+                <a href="../">Home</a>
+                <a href= '/groups'>Groups </a>
                 <a href="#">Profile</a>
                 <a href="#">Settings</a>
-            </div>
+                </div>
             <div class="main-content">
                 {% block content %}
                 {% endblock content %}

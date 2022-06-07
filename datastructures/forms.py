@@ -1,5 +1,9 @@
+from msilib.schema import Class
 from socket import fromshare
 from django import forms
+from django.contrib.auth.models  import User
+from django.contrib.auth.forms import UserCreationForm
+
 
 class ProfileForm(forms.Form):
     firstName = forms.CharField() 
@@ -9,7 +13,14 @@ class ProfileForm(forms.Form):
     age = forms.IntegerField() # make age input as only Natural Numbers!
     gender = forms.CharField()
 
-    #TO DO: Get Choice Filed for Gender working
+
+class RegisterUserForm (UserCreationForm):
+    email = forms.EmailField
+    first_name = forms.CharField(max_length = 50)
+    last_name = forms.CharField(max_length = 50)
+    class Meta: 
+        model = User
+        fields = ('username' , 'first_name', 'last_name','email',  'password1' , 'password2')
 
     
     #GenderType = [

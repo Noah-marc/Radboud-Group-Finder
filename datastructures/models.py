@@ -2,6 +2,7 @@ import datetime
 from statistics import mode
 from tokenize import group
 from django.db import models
+from django.contrib.auth.models  import User
 from multiselectfield import MultiSelectField
 
 COURSE_CHOICES = (
@@ -14,9 +15,8 @@ STUDYPROGRAM_CHOICES = (
 )
 # Create your models here.
 class Profile(models.Model):
+    user = models.OneToOneField(User, null = True, on_delete = models.CASCADE)
     course = MultiSelectField(choices=COURSE_CHOICES, default="")
-    firstName = models.TextField()
-    lastName = models.TextField()
     studentNumber = models.TextField()
     studyProgram = models.CharField(max_length = 100, choices = STUDYPROGRAM_CHOICES, default = "")
     age = models.IntegerField()

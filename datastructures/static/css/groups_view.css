@@ -1,0 +1,33 @@
+.group_view_container {
+    margin: 20px;
+    width: 20%;
+    border: 5px solid #FFFF00;
+    padding: 10px;
+    overflow-x: hidden;
+}
+
+.group_view_members {
+    background-color: white;
+    box-sizing: border-box;
+    display: block;
+    border: 3px solid #730E04;
+    border-radius: 10px;
+}
+
+.group_view_details {
+    background-color: white;
+    width: 200px;
+}
+
+.group_view_details_desc {
+    /* font-size: 14px;
+    margin: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word; */
+}

@@ -1,4 +1,5 @@
 import datetime
+from pyexpat import model
 from statistics import mode
 from tokenize import group
 from django.db import models
@@ -16,12 +17,12 @@ STUDYPROGRAM_CHOICES = (
 )
 # Create your models here.
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default="")
-    course = MultiSelectField(choices=COURSE_CHOICES, default="")
-    firstName = models.TextField()
-    lastName = models.TextField()
+    user = models.OneToOneField(User, null = True, on_delete=models.CASCADE, default="")
+    course = MultiSelectField(choices = COURSE_CHOICES, default="")
+    firstName = models.TextField(default="")
+    lastName = models.TextField(default="")
     studentNumber = models.TextField()
-    studyProgram = models.CharField(max_length = 100, choices = STUDYPROGRAM_CHOICES, default = "")
+    studyProgram = MultiSelectField(choices = STUDYPROGRAM_CHOICES, default = "")
     age = models.IntegerField()
     class GenderType(models.TextChoices): 
         MALE = "m", "male"
@@ -44,6 +45,6 @@ class Group(models.Model):
 class Membership(models.Model): 
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
-    date_joined = models.DateField(default=datetime.date.today)
+    group_joined = models.BooleanField(default=False)
     def __str__(self):
         return (self.group.__str__() + "-" + self.profile.__str__())

@@ -1,4 +1,5 @@
 from cProfile import Profile
+from datastructures.forms import RegisterUserForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -10,8 +11,8 @@ def login_view(request):
         if form.is_valid(): 
             user = form.get_user()
             login(request, user)
-            request.session['user_id'] = user.id
-            return redirect("") #TASK: find out how to redirect to 'profiles/details/<int:id>/'
+            request.session['user_id'] = request.user.id
+            return redirect("/") #TASK: find out how to redirect to 'profiles/details/<int:id>/'
     else: 
         form = AuthenticationForm(request)
     context = {"form" : form}
@@ -26,7 +27,7 @@ def logout_view(request):
 
 
 def register_view(request):
-    form = UserCreationForm(request.POST or None)
+    form = RegisterUserForm(request.POST or None)
     if form.is_valid(): 
         user_obj = form.save() 
         return redirect('/login')

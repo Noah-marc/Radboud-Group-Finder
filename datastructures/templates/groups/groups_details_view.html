@@ -1,19 +1,28 @@
 {% extends "base.html"%}
+{% load static %}
 {% block content %}
-    <h1>Profile page of {{group_obj.groupName}}</h1><br><br><br>
-        <p>Group Name: {{group_obj.groupName}}</p>
-        <p>Group Size: {{group_obj.groupSize}}</p>
-        <p>Group Description: {{group_obj.groupDescription}}</p>
-        <p>Group Course: {{group_obj.course}}</p>
-        <p>Group Members:</p>
+<div class="group_view_container">
+    <div class = "group_view_details">
+        <img class="group_view_img" src="{% static 'img/group_bg.png' %}">
+        <div class="group_view_name">{{group_obj.groupName}}</div>
+        <p>{{group_obj.course}}</p>
+        <p>{{group_obj.membership_set.all.count}}/{{group_obj.groupSize}}</p>
+        <div class = "group_view_details_desc">
+            <p class="group_view_description_title">Description</p> 
+            <p class="group_view_description">{{group_obj.groupDescription}}</p>
+        </div>
+    </div>
+    <div class = "group_view_members">    
+    <p>Group Members:</p>
         <ul>{% for membership in group_obj.membership_set.all %}
             <li>{{ membership.profile.firstName }}
                 {{ membership.profile.lastName }}
                 s{{ membership.profile.studentNumber }}
             </li>
         {% endfor %}</ul>
+    </div>
         <a href="delete">Delete</a>
-        
+</div>
         
         
 {% endblock content %}

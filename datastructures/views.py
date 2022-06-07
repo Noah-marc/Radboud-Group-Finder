@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 import datetime
-from .models import Profile
-from .models import Group
-from .models import Membership
+from .models import Profile, Group, Membership
+from django.contrib.auth.models import User
 
 # Create your views here. bruh
 
@@ -36,15 +35,17 @@ def profile_search_view(request):
 def profile_create_view(request): 
     context = {}
     if request.method == "POST": 
-        firstName = request.POST.get("First Name")
-        lastName = request.POST.get("Last Name")
+        user = User.objects.get(request.user_id) # van int -> user
+        firstName = request.user.first_name
+        lastName = request.user.last_name
         studentNumber = request.POST.get("Student Number")
         studyProgram = request.POST.get("Study program")
         gender = request.POST.get("Gender")
         age = request.POST.get("Age")
-        student = Profile.objects.create(firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
+        student = Profile.objects.create(user = user, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
         context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
         context ['created'] = True
+        return redirect("/")
     return render(request, "create-profile.html", context=context) 
 
 def test(request):
@@ -72,7 +73,6 @@ def groups_delete_view(request, id):
     group = get_object_or_404(Group, pk=id)
     if request.method == "POST":
         group.delete()
-        print("test")
         return redirect("/groups")
     context = {
         "object" : group
@@ -82,22 +82,21 @@ def groups_delete_view(request, id):
 def groups_create_view(request):
     context = {}
     if request.method == "POST":
-        date_joined = datetime.date.today
         groupName = request.POST.get("Group Name")
         course = request.POST.get("Group Course")
         groupSize = request.POST.get("Group Size")
         group = Group.objects.create(groupName = groupName, course = course, groupSize = groupSize,)
         Profile.user = request.user 
         profile = get_object_or_404(Profile, pk=Profile.user.id)
-        date_joined = datetime.date.today
         group_joined = True
-        owner = Membership.objects.create(profile = profile, group = group, date_joined = date_joined, group_joined = group_joined)
+        owner = Membership.objects.create(profile = profile, group = group, group_joined = group_joined)
         context = {
             "group_obj" : group,
             "owner_obj" : owner,
             "created" : True
         } 
-    return render(request, "", context=context)
+        return redirect("/")
+    return render(request, "groups/groups_create_view.html", context=context)
 
 def join_view(request, id, gid):
     profile = get_object_or_404(Profile, pk=id)

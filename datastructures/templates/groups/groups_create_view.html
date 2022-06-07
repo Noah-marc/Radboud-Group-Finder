@@ -1,7 +1,5 @@
 {% extends "base.html"%}
 
-<! -- this html form has to be changed, such that one uses the fields specified in the 'profile' model. Before that we want a working login flow tho, 
-such that not everyone can just change it -->
 
 
 
@@ -11,19 +9,17 @@ such that not everyone can just change it -->
 <div style = 'margin-top:30px;'></div>
     <form action ='.' method="POST">
         {% csrf_token %}
-        <div>   <input type = 'text' name = 'First Name' placeholder = 'First Name' /> </div>
-        <div>   <input type = 'text' name = 'Last Name' placeholder = 'Last Name' /> </div>
-        <div>   <input type = 'text' name = 'Student Number' placeholder = 'Student Number' /> </div>
-        <div>   <input type = 'text' name = 'Study program' placeholder = 'Study program' /> </div>
-        <div>   <input type = 'text' name = 'Gender' placeholder = 'Gender' /> </div>
-        <div>   <input type = 'text' name = 'Age' placeholder = 'Age' /> </div>
+        <div>   <input type = 'text' name = 'Group Name' placeholder = 'Group Name' /> </div>
+        <div>   <input type = 'text' name = 'Group Course' placeholder = 'Group Course' /> </div>
+        <div>   <input type = 'text' name = 'Group Size' placeholder = 'Group Size' /> </div>
 
-        <button type = 'submit' > Create article</button>
+        <button type = 'submit' > Create group</button>
     </form>
 </div>
 {% else %}
-<p> The profile was created</p>
-<a href = '{{student_obj.id}}/'> view profile</a>
+<p> The group was created</p>
+<a href = '{{group_obj.id}}/'> view group</a>
+<a href = '{{owner_obj.id}}/'> view owner</a>
 {% endif %}
 
 

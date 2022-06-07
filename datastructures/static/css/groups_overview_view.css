@@ -6,8 +6,7 @@
     height: 377px;
     top:35px;
     float: left;
-    margin-right: 20px;
-    margin-bottom: 20px;
+    margin: 10px;
     
     background-color: #FFF;
     border: 3px solid #730E04;
@@ -32,7 +31,7 @@
     overflow-wrap: break-word;
     font-weight: 200;
     font-size: 24px;
-    line-height: 20px;
+    /* line-height: 26px; */
     margin-top: 20px;
     margin-bottom: 10px;
 }
@@ -44,6 +43,7 @@
     width: 200px;
     height: 0px;
     border: 1px solid #730E04;
+    background-color: #730E04;
 }
 
 .group_course {

@@ -1,14 +1,16 @@
+from cProfile import Profile
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 # maybe use include 
 def login_view(request):
     if request.method == "POST": 
         form = AuthenticationForm(request, data = request.POST)
-        if form.is_valid: 
-            user = form.get_user
+        if form.is_valid(): 
+            user = form.get_user()
             login(request, user)
+            request.session['user_id'] = user.id
             return redirect("") #TASK: find out how to redirect to 'profiles/details/<int:id>/'
     else: 
         form = AuthenticationForm(request)

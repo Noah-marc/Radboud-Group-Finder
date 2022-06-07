@@ -3,6 +3,8 @@ from statistics import mode
 from tokenize import group
 from django.db import models
 from multiselectfield import MultiSelectField
+from django.contrib.auth.models import User
+
 
 COURSE_CHOICES = (
     ("Calculus and Probability Theory", "Calculus and Probability Theory"),
@@ -14,6 +16,7 @@ STUDYPROGRAM_CHOICES = (
 )
 # Create your models here.
 class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default="")
     course = MultiSelectField(choices=COURSE_CHOICES, default="")
     firstName = models.TextField()
     lastName = models.TextField()

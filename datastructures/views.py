@@ -3,8 +3,6 @@ import datetime
 from .models import Profile, Group, Membership
 from django.contrib.auth.models import User
 
-# Create your views here. bruh
-
 def profile_details_view(request, id = None, *args, **kwargs): 
     student = None
     if id is not None:

@@ -21,8 +21,6 @@ from datastructures import views
 
 from accounts import views as account_views
 
-
-
 urlpatterns = [
     path('', home_view), #home/ root page
     path('profiles/', views.profile_overview_view),
@@ -38,7 +36,7 @@ urlpatterns = [
     
     
     path('admin/', admin.site.urls),
-    path('login/', account_views.login_view ), 
+    path('login/', account_views.login_view), 
     #Work over the profiles URLS with using redirect !
     path('profiles/', views.profile_overview_view),
     path('profiles/details/', views.profile_search_view ),

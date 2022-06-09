@@ -1,6 +1,9 @@
-{% extends "base.html" %}
+{% extends "accounts/base_login.html" %}
 
-{% block content %}
+{% load static %}
+
+{%block content %}
+
 <h1>Logout</h1>
 {% if request.user.is_authenticated %}
     <div style = 'margin-top:30px;'>
@@ -13,4 +16,4 @@
 <p>You are already logged in. Do you want to <a href ='/logout' >logout</a> ? </p>
 {% endif %}
 
-{% endblock content %}
+{%endblock content %}

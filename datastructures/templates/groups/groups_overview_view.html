@@ -2,6 +2,7 @@
 {% load static%}
 
 {% block content %}
+<div class="main_container">
 <h1>Find Group</h1>
 <form action = 'details/' method = 'GET' >
     <input type = 'text' name ='query'/>
@@ -41,4 +42,5 @@
 </div></a>
     {% endfor %}
 
+</div>
 {% endblock content%}

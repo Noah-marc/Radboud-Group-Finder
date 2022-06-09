@@ -21,10 +21,10 @@
 </ul>  -->
 
 {% for x in groups_obj_list %}
-<a href = 'details/{{x.id}}/'><div class = "group">
-    <div class = "group_img" ><img src="{% static 'img/group_img.png' %}"></div>
-    <div class = "group_name">{{x.groupName}}</div>
-    <div class = "group_course">{{x.course}}</div>
+<a href = 'details/{{x.id}}/'><div class = "profile-group">
+    <div class = "profile-group_img" ><img src="{% static 'img/group_img.png' %}"></div>
+    <div class = "profile-group_name">{{x.groupName}}</div>
+    <div class = "profile-group_course">{{x.course}}</div>
     <div class = "border"></div>
     <div class = "group_desc_box"><div class = "group_desc">{{x.groupDescription}}</div></div>
     

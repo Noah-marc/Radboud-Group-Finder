@@ -5,13 +5,15 @@
 
         {%block content %}
         {% if not request.user.is_authenticated %}
+        <h1 style="text-align: center; margin-top: 30px">Login</h1>
         <div class = "login_form"> 
+
             <form method = 'POST'>
                 {% csrf_token %}
                 <div class="username">{{form.username}}</div>
                 <div class="password">{{form.password}}</div>
                 <!-- {{form.as_p }} -->
-                <button type = 'submit'> Log-in</button>
+                <button type = 'submit'> Login</button>
             </form>
             <p style="font-size: 14px">Don't have an account yet? <a href = '/register/'> Register here </a>  </p>
         </div>
@@ -26,8 +28,11 @@
             form_fields[2].placeholder='Password';
         </script>
         {% else %}
-    <p> You're already logged in. Would yo like to <a href ='/logout/'>logout</a> ?</p>
-    
+        <div class = "login_form"> 
+            <p> You're already logged in.<BR> Would you like to <a href ='/logout/'>logout</a>?</p>
+                <BR><BR>
+            <p> Or go back to the <a href ='/'>home page</a>.
+        </div>
         {% endif %}
 
         {%endblock content %}

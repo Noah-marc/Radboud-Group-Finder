@@ -1,7 +1,7 @@
-from cProfile import Profile
+from datastructures.models import Profile
 from datastructures.forms import RegisterUserForm
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from datastructures.forms import RegisterUserForm
 
@@ -12,11 +12,13 @@ def login_view(request):
         if form.is_valid(): 
             user = form.get_user()
             login(request, user)
-<<<<<<< HEAD
-=======
-            request.session['user_id'] = request.user.id
->>>>>>> eedf3fa972f58c7427e80b10dc0d63b6b660c365
-            return redirect("/") #TASK: find out how to redirect to 'profiles/details/<int:id>/'
+            request.session['user_id'] = get_user(request).id
+            try:
+                current_user = get_user(request)
+                get_object_or_404(Profile, user=current_user)
+            except:
+                return redirect("/profiles/details/create/")
+            return redirect("/")
     else: 
         form = AuthenticationForm(request)
     context = {"form" : form}
@@ -38,6 +40,7 @@ def register_view(request):
     context = {"form": form}
     return render(request, "accounts/register.html", context )
 
-
+#def edit_profile(request): 
+    
 
 # Create your views here.

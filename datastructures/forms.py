@@ -1,14 +1,10 @@
 from socket import fromshare
 from unittest.util import _MAX_LENGTH
 from django import forms
-<<<<<<< HEAD
-from django.contrib.auth.models  import User
-from django.contrib.auth.forms import UserCreationForm
-=======
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import Profile
 
->>>>>>> eedf3fa972f58c7427e80b10dc0d63b6b660c365
 
 
 class ProfileForm(forms.Form):
@@ -19,29 +15,59 @@ class ProfileForm(forms.Form):
     age = forms.IntegerField() # make age input as only Natural Numbers!
     gender = forms.CharField()
 
-<<<<<<< HEAD
-
 class RegisterUserForm (UserCreationForm):
-=======
-class RegisterUserForm (UserCreationForm):
-    id = forms.IntegerField()
->>>>>>> eedf3fa972f58c7427e80b10dc0d63b6b660c365
-    email = forms.EmailField
+    email = forms.EmailField(required= True)
     first_name = forms.CharField(max_length = 50)
     last_name = forms.CharField(max_length = 50)
     class Meta: 
         model = User
-<<<<<<< HEAD
-        fields = ('username' , 'first_name', 'last_name','email',  'password1' , 'password2')
-=======
         fields = ('username', 'first_name', 'last_name', 'email',  'password1' , 'password2')
 
+class EditUserForm():
+    username= forms.CharField(max_length = 50, required = True) 
+    email = forms.EmailField(required = True, )
+    first_name = forms.CharField(max_length = 50)
+    last_name = forms.CharField()
+
+    class Meta: 
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
+
+
 class EditProfileForm (UserChangeForm): 
+    student_number = forms.CharField()
+    COURSE_CHOICES = (
+        ("Calculus and Probability Theory", "Calculus and Probability Theory"),
+        ("Hacking in C", "Hacking in C"), 
+        ("none", "none")
+    )
+    courses = forms.MultipleChoiceField(choices = COURSE_CHOICES, 
+                                        initial = "none",        
+                                        required = True, 
+                                        label= 'Courses'
+                                        )
+    STUDYPROGRAM_CHOICES = (
+        ("Computing Science", "Computing Science"),
+        ("Mathematics", "Mathematics"),
+        ("none", "none")
+    )
+    studyProgram = forms.MultipleChoiceField(choices = STUDYPROGRAM_CHOICES, 
+                                             initial = "none", 
+                                             required = True,
+                                             label = "Study Program"
+                                        
+    )
+    age = forms.IntegerField(required= True)
+    # class Meta: 
+    #     model = Profile
+    #     fields = ('student_number', ')
+                                        
+
+
 
 
 
     #TO DO: Get Choice Filed for Gender working
->>>>>>> eedf3fa972f58c7427e80b10dc0d63b6b660c365
 
     
     #GenderType = [

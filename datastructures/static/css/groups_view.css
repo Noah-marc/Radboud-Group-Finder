@@ -1,60 +1,74 @@
 .group_view_name {
-    padding-top: 80px;
     /* display: inline; */
     font-size: 18pt;
     font-weight: 600;
+    padding-top: 80px;
 }
 
 .group_view_container {
-    margin: 0 auto;
-    width: 100%;
-    position:relative;
     font-family: "Montserrat";
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
 }
 
 .group_view_img {
     float: left;
-    width: 140px; 
     padding: 30px;
-}
-
-.group_view_description_title {
-    font-weight: 600;
-    font-size: 14pt;
-    padding: 15px 15px 10px 15px;
+    width: 140px;
 }
 
 .group_view_description {
-    padding: 0px 15px 25px 15px;
-    padding-top: 0;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+    font-size: 14px;
+    margin-right: 0;
+    /* text-overflow: ellipsis; */
+    overflow-wrap: break-word;
+    width: 100%;
+}
+
+.group_view_description h1 {
+    font-size: 14pt;
+    font-weight: 600;
+    padding: 0px 15px 0px 30px;
+}
+
+.group_view_description p {
+    padding: 10px 30px 20px 30px;
 }
 
 .group_view_members {
-    background-color: #E7E7E7;
-    width: 700px;
+    background-color: #d6d6d6;
+    border-radius: 20px;
     box-sizing: border-box;
-    border: 0px solid #730E04;
-    border-radius: 10px;
     margin: 0 auto;
+    /* float: left; */
+    overflow: auto;
+    width: 700px;
+    padding-bottom: 20px;
+}
+
+.group_view_members h1 {
+    font-size: 14pt;
+    font-weight: 600;
+    padding: 28px 15px 15px 30px;
+}
+
+.member {
+    /* display: block; */
+    /* position: relative; */
+    float: left;
+    font-size: 12pt;
+    padding: 15px 15px 15px 30px;
+    width: 300px;
 }
 
 .group_view_details {
-    background-color: #E7E7E7;
-    width: 700px;
-    margin: 0 auto;
+    background-color: #d6d6d6;
     border-radius: 0 0 20px 20px;
-}
-
-.group_view_details_desc {
-    width: 97.5%;
-    font-size: 14px;
-    margin: 20px;
-    /* margin-top: 0;
-    margin-bottom: 0; */
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    overflow-wrap: break-word;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 700px;
 }

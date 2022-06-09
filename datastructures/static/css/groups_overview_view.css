@@ -1,82 +1,80 @@
 .group {
-    box-sizing: border-box;
-    display: block;
-    position: relative;
-    width: 240px;
-    height: 377px;
-    top:35px;
-    float: left;
-    margin: 10px;
-    
     background-color: #FFF;
     border: 3px solid #730E04;
     border-radius: 10px;
+    box-sizing: border-box;
+    display: block;
+    float: left;
     font-family: 'Montserrat';
+    height: 377px;
+    margin: 10px;
+    position: relative;
+    top: 35px;
+    width: 240px;
 }
 
 .group_img {
-    margin-top: 40px;
     display: flex;
     justify-content: center;
+    margin-top: 40px;
 }
 
 .group_name {
-    text-align: center;
-    font-style: normal;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    overflow-wrap: break-word;
-    font-weight: 200;
+    display: -webkit-box;
     font-size: 24px;
+    font-style: normal;
+    font-weight: 200;
+    -webkit-line-clamp: 1;
+    margin-bottom: 10px;
     /* line-height: 26px; */
     margin-top: 20px;
-    margin-bottom: 10px;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-align: center;
+    text-overflow: ellipsis;
 }
 
 .border {
-    position: absolute;
-    left: 15px;
-    bottom: 45%;
-    width: 200px;
-    height: 0px;
-    border: 1px solid #730E04;
     background-color: #730E04;
+    border: 1px solid #730E04;
+    bottom: 45%;
+    height: 0px;
+    left: 15px;
+    position: absolute;
+    width: 200px;
 }
 
 .group_course {
-    text-align: center;
     font-size: 16px;
+    text-align: center;
 }
 
 .group_desc_box {
-    position: absolute;
-    height: 30%;
-    width: 100%;
     /* top:55%; */
     bottom: 40px;
+    height: 30%;
+    position: absolute;
+    width: 100%;
 }
 
 .group_desc {
-    font-size: 14px;
-    margin: 20px;
-    margin-top: 0;
-    margin-bottom: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 7;
     -webkit-box-orient: vertical;
+    display: -webkit-box;
+    font-size: 14px;
+    -webkit-line-clamp: 7;
+    margin: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
     overflow: hidden;
-    text-overflow: ellipsis;
     overflow-wrap: break-word;
+    text-overflow: ellipsis;
 }
 
 .group_size {
+    bottom: 10px;
     float: bottom;
     position: absolute;
+    text-align: center;
     width: 100%;
-    bottom: 10px;
-    text-align: center;    
 }
-

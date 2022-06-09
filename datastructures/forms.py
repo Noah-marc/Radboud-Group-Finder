@@ -1,4 +1,3 @@
-from msilib.schema import Class
 from socket import fromshare
 from unittest.util import _MAX_LENGTH
 from django import forms

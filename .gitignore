@@ -7274,3 +7274,4 @@ db.sqlite3
 datastructures/__pycache__/forms.cpython-310.pyc
 datastructures/__pycache__/models.cpython-310.pyc
 accounts/__pycache__/views.cpython-310.pyc
+*.pyc

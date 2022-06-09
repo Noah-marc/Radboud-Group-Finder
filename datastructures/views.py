@@ -35,9 +35,12 @@ def profile_search_view(request):
 def profile_create_view(request): 
     context = {}
     if request.method == "POST": 
-        user = User.objects.get(request.user_id) # van int -> user
-        firstName = request.user.first_name
-        lastName = request.user.last_name
+        # user = User.objects.get(request.user_id) # van int -> user
+        user = request.user
+        # firstName = request.user.first_name
+        # lastName = request.user.last_name
+        firstName = request.POST.get("First Name")
+        lastName = request.POST.get("Last Name")
         studentNumber = request.POST.get("Student Number")
         studyProgram = request.POST.get("Study program")
         gender = request.POST.get("Gender")
@@ -85,14 +88,14 @@ def groups_create_view(request):
         groupName = request.POST.get("Group Name")
         course = request.POST.get("Group Course")
         groupSize = request.POST.get("Group Size")
-        group = Group.objects.create(groupName = groupName, course = course, groupSize = groupSize,)
-        Profile.user = request.user 
+        group = Group.objects.create(groupName = groupName, course = course, groupSize = groupSize)
+        Profile.user = request.user
         profile = get_object_or_404(Profile, pk=Profile.user.id)
         group_joined = True
         owner = Membership.objects.create(profile = profile, group = group, group_joined = group_joined)
         context = {
             "group_obj" : group,
-            "owner_obj" : owner,
+            "owner_obj" : profile,
             "created" : True
         } 
         return redirect("/")

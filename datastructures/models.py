@@ -18,7 +18,7 @@ STUDYPROGRAM_CHOICES = (
     ("Mathematics", "Mathematics"),
 )
 
-Gender_Types = (
+GENDER_TYPES = (
     ("male", "male"), 
     ("female", "female"), 
     ("other", "other")
@@ -37,7 +37,7 @@ class Profile(models.Model):
         MALE = "male", "male"
         Female = "fale", "fale"
         OTHER= "other", "other"
-    gender = models.CharField(max_length =1, choices = GenderType.choices, default = GenderType.MALE )
+    gender = models.CharField(max_length =10, choices = GenderType.choices, default = GenderType.MALE )
     description = models.CharField(max_length=500)
     def __str__(self):
         return self.firstName

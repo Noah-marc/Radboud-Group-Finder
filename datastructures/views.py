@@ -35,7 +35,7 @@ def profile_search_view(request):
 def profile_create_view(request): 
     context = {}
     if request.method == "POST": 
-        user = request.user # van int -> user
+        user = User.objects.get(request.user_id) # van int -> user
         firstName = request.user.first_name
         lastName = request.user.last_name
         studentNumber = request.POST.get("Student Number")

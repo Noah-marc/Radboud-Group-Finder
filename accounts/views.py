@@ -12,7 +12,10 @@ def login_view(request):
         if form.is_valid(): 
             user = form.get_user()
             login(request, user)
+<<<<<<< HEAD
+=======
             request.session['user_id'] = request.user.id
+>>>>>>> eedf3fa972f58c7427e80b10dc0d63b6b660c365
             return redirect("/") #TASK: find out how to redirect to 'profiles/details/<int:id>/'
     else: 
         form = AuthenticationForm(request)

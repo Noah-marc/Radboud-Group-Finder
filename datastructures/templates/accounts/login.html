@@ -1,22 +1,18 @@
-{% extends "accounts/base_login.html" %}
+{% extends "base.html" %}
 
 {% load static %}
+{%block content %}
 
+{% if not request.user.is_authenticated %}
+    <div> 
+        <form method = 'POST'>{% csrf_token %}
+            {{form.as_p }}
+            <button type = 'submit'> Login</button>
+        </form>
+        <p>You do not have an account yet? Then <a href = '/register/'> register </a>  </p>
+    </div>
+{% else %}
+<p> You're already logged in. Would yo like to <a href ='/logout/'>logout</a> ?</p>
 
-        {%block content %}
-        {% if not request.user.is_authenticated %}
-        <div> 
-            <form method = 'POST'>{% csrf_token %}
-                {{form.as_p }}
-                <button type = 'submit'> Login</button>
-            </form>
-            <p>You do not have an account yet? Then <a href = '/register/'> register </a>  </p>
-        </div>
-        {% else %}
-    <p> You're already logged in. Would yo like to <a href ='/logout/'>logout</a> ?</p>
-    
-        {% endif %}
-
-        {%endblock content %}
-
-
+{% endif %}
+{%endblock content %}

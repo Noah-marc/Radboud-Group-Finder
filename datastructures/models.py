@@ -18,10 +18,15 @@ STUDYPROGRAM_CHOICES = (
 )
 # Create your models here.
 class Profile(models.Model):
+<<<<<<< HEAD
+    user = models.OneToOneField(User, null = True, on_delete = models.CASCADE)
+    course = MultiSelectField(choices=COURSE_CHOICES, default="")
+=======
     user = models.OneToOneField(User, null = True, on_delete=models.CASCADE, default="")
     course = MultiSelectField(choices = COURSE_CHOICES, default="")
     firstName = models.TextField(default="")
     lastName = models.TextField(default="")
+>>>>>>> eedf3fa972f58c7427e80b10dc0d63b6b660c365
     studentNumber = models.TextField()
     studyProgram = MultiSelectField(choices = STUDYPROGRAM_CHOICES, default = "")
     age = models.IntegerField()

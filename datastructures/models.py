@@ -12,19 +12,18 @@ COURSE_CHOICES = (
     ('0', 'Calculus and Probability Theory'),
     ('1', 'Hacking in C'),
 )
-# COURSE_CHOICES = {
-#     "Calculus and Probability Theory": "Calculus and Probability Theory",
-#     "Hacking in C": "Hacking in C"
-# }
+
 STUDYPROGRAM_CHOICES = (
     ("Computing Science", "Computing Science"),
     ("Mathematics", "Mathematics"),
 )
+
 Gender_Types = (
     ("male", "male"), 
     ("female", "female"), 
     ("other", "other")
 )
+
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, null = True, on_delete=models.CASCADE, default="")

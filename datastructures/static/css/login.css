@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+  }
+
+.container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+}
+
+.cover {
+    /* float: left; */
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("{% static 'img/cover3.jpg'%}");
+}
+
+
+.left {
+    float: left;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    /* background: blue; */
+    overflow: hidden;
+    background-image: url("../img/cover3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.right {
+    float: left;
+    width: 500px;
+    height: 100%;
+    position: relative;
+    /* z-index: 1000; */
+    /* background-color: #730E04; */
+    background-color: #f5f5f5;
+}
+
+.top {
+    width: 100%;
+}
+
+.bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.username {
+    margin: auto;
+    margin: 0 auto;
+    display: block;
+    padding: 5px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px lightgrey inset !important;
+    font-family: "Montserrat";
+}
+
+input#id_username {
+    border: none;
+    border-radius: 20px;
+    font-size:14px;
+    padding: 5px 8px 5px 8px;
+    width: 250px;
+    background-color: lightgrey;
+}
+
+input#id_username:focus {
+    outline: none;
+}
+
+input#id_password {
+    border: none;
+    border-radius: 20px;
+    font-size:14px;
+    padding: 5px 8px 5px 8px;
+    width: 250px;
+    background-color: lightgrey;
+
+}
+
+input#id_password:focus {
+    outline: none;
+}
+
+.password {
+    margin: auto;
+    padding: 5px;
+
+}
+
+.login_form {
+    margin: 70px auto 30px auto;
+    width: 300px;
+    text-align: center
+}
+
+button {
+    font-size: 20px;
+    color: white;
+    border: none;
+    background-color: #730E04;
+    width: 200px;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor:pointer
+}
+
+a {
+    color: #E3000B;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

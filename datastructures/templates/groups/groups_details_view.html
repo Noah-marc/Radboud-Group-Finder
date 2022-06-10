@@ -11,6 +11,9 @@
                 <h1>Description</h1> 
                 <p>{{group_obj.groupDescription}}</p>
         </div>
+        {% if membership.isOwner %}
+        <a style="margin-left: 542px" href="delete"> <button>Delete</button></a>
+        {% endif %}
     </div>
     <div class = "group_view_members">    
     <h1>Members</h1>
@@ -20,7 +23,6 @@
             </div>
         {% endfor %}
     </div>
-        <a href="delete">Delete</a>
 </div>
         
         

@@ -107,8 +107,10 @@ def groups_overview_view(request, *args, **kwargs):
 @login_required
 def groups_details_view(request, id, *args, **kwargs):
     group = get_object_or_404(Group, pk=id)
+    membership = get_object_or_404(Membership, group = group)
     context = {
         "group_obj": group,
+        "membership": membership
     }
     return render(request, "groups/groups_details_view.html", context = context)
 

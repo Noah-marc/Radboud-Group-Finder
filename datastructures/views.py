@@ -63,6 +63,12 @@ def profile_edit_view(request):
             get_object_or_404(Profile, user=current_user)
         except:
             return redirect("/profiles/details/create/")
+        student_obj = get_object_or_404(Profile, user=current_user) 
+        student_obj.studentNumber = request.POST.get("Student Number")
+        student_obj.studyProgram = request.POST.get("Study program")
+        student_obj.gender = request.POST.get("Gender")
+        student_obj.age = request.POST.get("Age")
+        student_obj.save()
         # Her eneeds to come the actuall passing of the data. Does  "student_obj = get_object_or_404(Profile, user= current_user)" work, such that it has similar context as "t = TemperatureData.objects.get(id=1)" (in regards to what it does generally)
         return redirect("/")    
     return render (request, "profiles/edit-profile.html", context = context )

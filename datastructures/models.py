@@ -57,3 +57,7 @@ class Membership(models.Model):
     group_joined = models.BooleanField(default=False)
     def __str__(self):
         return (self.group.__str__() + "-" + self.profile.__str__())
+    def get_profile(self):
+        return (self.profile.__str__())
+    def get_group(self):
+        return (self.group.__str__())

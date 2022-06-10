@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from datastructures.forms import RegisterUserForm
+from django.contrib.auth.decorators import login_required
 
 # maybe use include 
 def login_view(request):
@@ -39,6 +40,17 @@ def register_view(request):
         return redirect('/login')
     context = {"form": form}
     return render(request, "accounts/register.html", context )
+
+@login_required
+def edit_user_view(request): 
+    context = {}
+    if request.method == "POST":
+        user = get_user(request)
+        user.username = request.POST.get("Username")
+        user.first_name = request.POST.get("First Name")
+        user.last_name = request.POST.get("Last Name")
+        user.save()
+    return render(request, "accounts/edit-user.html", context = context) 
 
 #def edit_profile(request): 
     

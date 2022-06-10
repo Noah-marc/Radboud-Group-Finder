@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%block content%}
+{% if not created %}
+<h1>Edit your account</h1>
+<div style = 'margin-top:30px;'></div>
+    <form action ='.' method="POST">
+        {% csrf_token %}
+        
+        <div>   <input type = 'text' name = 'Username' placeholder = 'Username ' /> </div>
+        <div>   <input type = 'text' name = 'First Name' placeholder = 'First Name' /> </div>
+        <div>   <input type = 'text' name = 'Last Name' placeholder = 'Last Name' /> </div>
+        <!-- {{form.as_p}} -->
+
+        <button type = 'submit' > Edit user</button>
+    </form>
+</div>
+{% else %}
+<p> The profile was edited</p>
+<a href = '{{student_obj.id}}/'> view profile</a>
+{% endif %}
+{%endblock content %}

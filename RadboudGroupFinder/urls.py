@@ -46,5 +46,6 @@ urlpatterns = [
     #Work over profiles URLS with using redirect!
     path('logout/', account_views.logout_view),
     path('register/', account_views.register_view),
+    path('edit-user/', account_views.edit_user_view), 
     # path ('accounts/', include('django.contrib.auth.urls')) --> maybe use this to spare creating all the paths by onself
 ]

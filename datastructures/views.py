@@ -144,17 +144,27 @@ def join_view(request, id):
     profile = get_object_or_404(Profile, user=current_user)
     group = get_object_or_404(Group, pk=id)
     if request.method == "GET":
-        for i in range(len(profile.course)):
-            for j in range(len(group.course)):                
-                if profile.course[i] == group.course[j]:
-                    group_joined = True
-                    membership = Membership.objects.create(profile = profile, group = group, group_joined = group_joined)
-                    context = {
-                        "membership_obj" : membership
-                    }
-                    return redirect("/groups/")
-                else:
-                    return redirect("/")
-    else:
-        context = {}
+        if can_join(profile,group) == True:
+            group_joined = True
+            membership = Membership.objects.create(profile = profile, group = group, group_joined = group_joined)
+            context = {
+                "membership_obj" : membership
+            }
+            return redirect("/groups/")
+        else:
+            return redirect("/")
     return render(request, "groups/groups_details_view.html", context=context)
+
+def can_join(profile, group):
+    i = 0
+    for i in range(len(profile.course)):
+        s1 = profile.course[i]
+        s2 = group.course
+        if s1.eq(s2):
+            try:
+                get_object_or_404(Membership, profile=profile, group=group, group_joined = True)
+            except:
+                amountMembers = group.members.count()
+                if not(amountMembers + 1 > group.groupSize):
+                    return True
+    return False

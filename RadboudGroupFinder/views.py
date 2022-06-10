@@ -4,7 +4,9 @@ views.py is for rendering html web pages
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 from datastructures.models import Profile
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def home_view(request, *args, **kwargs): 
     """
     Take in a request (Django sends requests by default)"
@@ -16,6 +18,7 @@ def home_view(request, *args, **kwargs):
     context = {
         "student_obj_list": student_queryset,
         "student_obj": student,
+        "user": request.user
     }
 
     #Django template

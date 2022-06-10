@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import get_user
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 
 import datetime
 from .models import Profile, Group, Membership
@@ -22,7 +23,8 @@ def profile_details_view(request, id = None, *args, **kwargs):
 def profile_overview_view(request, *args, **kwargs): #overview of all existitng profiles
     profile_queryset = Profile.objects.all()
     context = {
-        "profile_obj_list": profile_queryset
+        "profile_obj_list": profile_queryset,
+        # "user": request.user
     }
     return render(request, "profiles/profiles-overview.html", context = context) 
 

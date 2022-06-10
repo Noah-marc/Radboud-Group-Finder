@@ -1,18 +1,47 @@
-{% extends "base.html" %}
+{% extends "accounts/base_login.html" %}
 
 {% load static %}
 {%block content %}
 
 {% if not request.user.is_authenticated %}
+
     <div> 
         <form method = 'POST'>{% csrf_token %}
-            {{form.as_p }}
-            <button type = 'submit'> Register</button>
+            <h1 style="text-align: center">Register</h1>
+            <div class="register_form">
+            {{form.username}}
+            {{form.email}}
+            {{form.first_name}}
+            {{form.last_name}}
+            {{form.password1}}
+            {{form.password2}}
+            <!-- {{form.as_p}} -->
+            <button type = 'submit'>Confirm</button>
+            </div>
         </form>
-        <p>Already have an account? Then <a href = '/login/'> login </a>  </p>
+        <p style="text-align: center">Already have an account? <a href = '/login/'>Login here</a>.</p>
+        <div class="requirements">
+            <!-- <p>Your password can’t be too similar to your other personal information.</p>
+            <p>Your password must contain at least 8 characters.</p>
+            <p>Your password can’t be a commonly used password.</p>
+            <p>Your password can’t be entirely numeric.</p>
+            <p>Your password can’t be too similar to your other personal information.</p> -->
+        </div>
     </div>
+
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder='Username';
+    form_fields[2].placeholder='Email';
+    form_fields[3].placeholder='First Name';
+    form_fields[4].placeholder='Last Name';
+    form_fields[5].placeholder='Password';
+    form_fields[6].placeholder='Confirm password';
+</script>
+
 {% else %}
 <p> You're already logged in and cannot register. Would yo like to <a href ='/logout/'>logout</a> ?</p>
+
 
 {% endif %}
 {%endblock content %}

@@ -4,16 +4,21 @@
 
 {%block content %}
 
-<h1>Logout</h1>
+<h1 style="margin-top: 50px; text-align: center">Logout</h1>
 {% if request.user.is_authenticated %}
-    <div style = 'margin-top:30px;'>
+    <div style="margin-top:10px">
         <form method="POST"> {% csrf_token %}
-           <p>Are you sure you want to logout? </p>
-            <button type="submit">Yes, logout </button>
+            <div style="margin-top: 40px" class = "login_form"> 
+                <p>Are you sure you want to logout? </p>
+                <button type="submit">Yes, logout </button>
+                <p> Or go back to the <a href ='/'>home page</a>.
+            </div>
         </form> 
     </div>
 {% else %} 
-<p>You are already logged in. Do you want to <a href ='/logout' >logout</a> ? </p>
+<div class = "login_form"> 
+    <p> You're not logged in yet.<BR> Would you like to <a href ='/login/'>login</a>?</p>
+</div>
 {% endif %}
 
 {%endblock content %}

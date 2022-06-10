@@ -95,7 +95,6 @@ input#id_password {
     padding: 5px 8px 5px 8px;
     width: 250px;
     background-color: lightgrey;
-
 }
 
 input#id_password:focus {
@@ -111,7 +110,29 @@ input#id_password:focus {
 .login_form {
     margin: 70px auto 30px auto;
     width: 300px;
-    text-align: center
+    text-align: center;
+}
+
+
+input#id_username, input#id_password1, input#id_password2, input#id_last_name, input#id_first_name, input#id_email {
+    border: none;
+    border-radius: 20px;
+    font-size:14px;
+    padding: 5px 8px 5px 8px;
+    margin: 3px 0px 3px 0px;
+    width: 250px;
+    background-color: lightgrey;
+}
+
+.register_form {
+    margin: 20px auto 10px auto;
+    width: 350px;
+    text-align: center;
+}
+
+.requirements {
+    margin: 30px 10px 0px 10px;
+    font-size: 10pt;
 }
 
 button {

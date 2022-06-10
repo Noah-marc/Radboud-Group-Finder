@@ -1,11 +1,20 @@
 {% extends "base.html"%}
-
+{% load static%}
 {% block content %}
-    <h1>Profile page of {{student_obj.firstName}} {{student_obj.lastName}}</h1>
-        <p>First Name: {{student_obj.firstName}}</p>
-        <p>Last Name: {{student_obj.lastName}}</p>
-        <p>Student number: {{student_obj.studentNumber}}</p>
-        <p>Study program: {{student_obj.studyProgram}}</p>
-        <p>Gender: {{student_obj.gender}}</p>
-        <p>Age: {{student_obj.age}}</p>
+
+        <div class="group_view_container">
+            <div class = "group_view_details">
+                <img class="group_view_img" src="{% static 'img/profile_bg.png' %}">
+                <div class="group_view_name">{{student_obj.firstName}} {{student_obj.lastName}}, {{student_obj.age}}</div>
+                <p>s{{student_obj.studentNumber}}</p>
+                <p>{{student_obj.studyProgram}}</p>
+                <p>Gender: {{student_obj.gender}}</p>
+                <div class="group_view_description">
+                        <h1>Description</h1> 
+                        <p>{{student_obj.description}}</p>
+                </div>
+            </div>
+
+                <a href="delete">Delete</a>
+        </div>
 {% endblock content %}

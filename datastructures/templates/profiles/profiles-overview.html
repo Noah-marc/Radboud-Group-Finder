@@ -1,14 +1,24 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block content %}
+<div class="main_container">
 <h1> Profile overview</h1>
 <form action = 'details/' method = 'GET' >
     <input type = 'text' name ='query'/>
     <input type = 'submit' />
 </form>
-<ul>{% for x in profile_obj_list %}
-    <li>{{ x.firstName }}-{{x.lastName}}-{{x.studyProgram}} <a href = 'details/{{x.id}}/'> view profile</a></li>
-    {% endfor %}
-</ul> 
+{% for x in profile_obj_list %}
+    <a href = 'details/{{x.id}}/'><div class = "profile-group">
+    <div class = "profile-group_img" ><img src="{% static 'img/person.png' %}"></div>
+    <div class = "profile-group_name">{{ x.firstName }} {{x.lastName}}</div>
+    <div class = "profile-group_course">{{x.studyProgram}}</div>
+    <div class = "border"></div>
+    <div class = "profile_desc_box"><div class = "profile_desc">{{x.description}}</div></div>
+
+    </a>
+    
+</div>
+
+{% endfor %}
 {% endblock content%}

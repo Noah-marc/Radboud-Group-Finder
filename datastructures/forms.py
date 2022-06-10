@@ -27,9 +27,9 @@ class ProfileCreationForm(forms.ModelForm):
         fields = ['studentNumber', 'studyProgram', 'age', 'gender']
 
 class RegisterUserForm (UserCreationForm):
-    email = forms.EmailField(required= True)
-    first_name = forms.CharField(max_length = 50)
-    last_name = forms.CharField(max_length = 50)
+    email = forms.EmailField(required= True, label='')
+    first_name = forms.CharField(max_length = 50, label='')
+    last_name = forms.CharField(max_length = 50, label='')
     class Meta: 
         model = User
         fields = ('username', 'first_name', 'last_name', 'email',  'password1' , 'password2')

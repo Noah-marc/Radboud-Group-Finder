@@ -1,18 +1,20 @@
 {% extends "base.html"%}
 {%block content%}
 {% if not created %}
-<h1>Create your profile</h1>
+<h1 style="margin-top: 40px">Create your profile</h1>
 <div style = 'margin-top:30px;'></div>
     <form action ='.' method="POST">
         {% csrf_token %}
-        
-        <div>   <input type = 'text' name = 'Student Number' placeholder = 'Student Number' /> </div>
-        <div>   <input type = 'text' name = 'Study program' placeholder = 'Study program' /> </div>
-        <div>   <input type = 'text' name = 'Gender' placeholder = 'Gender' /> </div>
-        <div>   <input type = 'text' name = 'Age' placeholder = 'Age' /> </div>
-        <!-- {{form.as_p}} -->
-
-        <button type = 'submit' > Create profile</button>
+        <div>   <input class = "student_number" type = 'text' name = 'Student Number' placeholder = 'Student Number' /> </div>
+        <select class="study_program" id="courses" name="Study program">
+            <option value="" disabled selected>Study program</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Computing Science">Computing Science</option>
+        </select>
+        <div>   <input type = 'text' name = 'Course choices' placeholder = 'Course choices' /> </div>
+        <div>   <input class = "gender" type = 'text' name = 'Gender' placeholder = 'Gender' /> </div>
+        <div>   <input class = "age" type = 'text' name = 'Age' placeholder = 'Age' /> </div>
+        <button type = 'submit' > Create</button>
     </form>
 </div>
 {% else %}

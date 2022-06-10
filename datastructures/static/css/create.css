@@ -1,0 +1,32 @@
+.student_number, .gender, .age, .group_size_form, .group_name {
+    border: none;
+    border-radius: 20px;
+    font-size:14px;
+    padding: 5px 8px 5px 8px;
+    margin: 3px 0px 3px 0px;
+    width: 250px;
+    background-color: lightgrey;    
+}
+
+.study_program, .group_course {
+    border: none;
+    border-radius: 20px;
+    font-size:14px;
+    padding: 5px 8px 5px 8px;
+    margin: 3px 0px 3px 0px;
+    width: 266px;
+    background-color: lightgrey;   
+}
+
+button {
+    font-size: 20px;
+    color: white;
+    border: none;
+    background-color: #730E04;
+    width: 150px;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor:pointer
+}

@@ -5,20 +5,19 @@
 
 {%block content%}
 {% if not created %}
-<h1>Create your Group</h1>
+<h1 style="margin-top: 40px">Create your Group</h1>
 <div style = 'margin-top:30px;'></div>
     <form action ='.' method="POST">
         {% csrf_token %}
-        <div>   <input type = 'text' name = 'Group Name' placeholder = 'Group Name' /> </div>
-        <div>   
-            <select id="courses" name="Group Course">
+        <div><input class = "group_name" type = 'text' name = 'Group Name' placeholder = 'Group Name'/></div>
+        <div>    
+            <select class = "group_course" id="courses" name="Group Course">
                 <option value="" disabled selected>Group Course</option>
                 <option value="Calculus and Probability Theory">Calculus & Probability Theory</option>
                 <option value="Hacking in C">Hacking in C</option>
             </select>
         </div>
-        <div>   <input type = 'text' name = 'Group Size' placeholder = 'Group Size' /> </div>
-
+        <div><input class = "group_size_form" type = 'text' name = 'Group Size' placeholder = 'Group Size'/></div>
         <button type = 'submit' > Create group</button>
     </form>
 </div>

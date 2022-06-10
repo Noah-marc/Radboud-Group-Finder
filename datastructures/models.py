@@ -5,12 +5,11 @@ from tokenize import group
 from django.db import models
 from django.contrib.auth.models  import User
 from multiselectfield import MultiSelectField
-from django.contrib.auth.models import User
 
 
 COURSE_CHOICES = (
-    ('0', 'Calculus and Probability Theory'),
-    ('1', 'Hacking in C'),
+    ('Calculus and Probability Theory', 'Calculus and Probability Theory'),
+    ('Hacking in C', 'Hacking in C'),
 )
 
 STUDYPROGRAM_CHOICES = (

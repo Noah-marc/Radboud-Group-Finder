@@ -3,7 +3,6 @@ from django.contrib.auth import get_user
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 
-import datetime
 from .models import Profile, Group, Membership
 from django.contrib.auth.models import User
 from .forms import ProfileCreationForm

@@ -4,16 +4,27 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Profile
+from django.contrib.auth import get_user
 
 
 
-class ProfileForm(forms.Form):
-    firstName = forms.CharField() 
-    lastName = forms.CharField()
-    studentNumber = forms.CharField()
-    studyProgram = forms.CharField()
-    age = forms.IntegerField() # make age input as only Natural Numbers!
-    gender = forms.CharField()
+class ProfileCreationForm(forms.ModelForm):
+    # studentNumber = forms.CharField()
+    # STUDYPROGRAM_CHOICES = (
+    #     ("Computing Science", "Computing Science"),
+    #     ("Mathematics", "Mathematics"),
+    #     ("none", "none")
+    # )
+    # studyProgram = forms.MultipleChoiceField(choices = STUDYPROGRAM_CHOICES, 
+    #                                          initial = "none", 
+    #                                          required = True,
+    #                                          label = "Study Program"                                   
+    # )
+    # age = forms.IntegerField() # make age input as only Natural Numbers!
+    # gender = forms.CharField()
+    class Meta: 
+        model = Profile
+        fields = ['studentNumber', 'studyProgram', 'age', 'gender']
 
 class RegisterUserForm (UserCreationForm):
     email = forms.EmailField(required= True, label='')
@@ -54,8 +65,7 @@ class EditProfileForm (UserChangeForm):
     studyProgram = forms.MultipleChoiceField(choices = STUDYPROGRAM_CHOICES, 
                                              initial = "none", 
                                              required = True,
-                                             label = "Study Program"
-                                        
+                                             label = "Study Program"                                   
     )
     age = forms.IntegerField(required= True)
     # class Meta: 
@@ -79,9 +89,9 @@ class EditProfileForm (UserChangeForm):
 
 
     #!!!!!!!!!!!!!!!temporary function, replace by correct cleaning functions later on !!!!!!!!!!!!!!!!
-    def clean_title(self): 
-        cleaned_data = self.cleaned_data # this is a dictionary, containing cleaned data for all fileds in ProfileForm
-        return cleaned_data
+    # def clean_title(self): 
+    #     cleaned_data = self.cleaned_data # this is a dictionary, containing cleaned data for all fileds in ProfileForm
+    #     return cleaned_data
 
 
         

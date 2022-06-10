@@ -27,6 +27,7 @@ urlpatterns = [
     path('profiles/details/', views.profile_search_view ),
     path('profiles/details/create/', views.profile_create_view),
     path('profiles/details/<int:id>/', views.profile_details_view),
+    path('profiles/edit/', views.profile_edit_view),
 
     path('groups/', views.groups_overview_view),
     path('groups/details/<int:id>/', views.groups_details_view),

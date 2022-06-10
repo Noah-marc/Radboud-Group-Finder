@@ -1,7 +1,7 @@
-{% extends "base.html"%}
+{% extends "base.html" %}
 {%block content%}
 {% if not created %}
-<h1>Create your profile</h1>
+<h1>Edit your profile</h1>
 <div style = 'margin-top:30px;'></div>
     <form action ='.' method="POST">
         {% csrf_token %}
@@ -12,13 +12,11 @@
         <div>   <input type = 'text' name = 'Age' placeholder = 'Age' /> </div>
         <!-- {{form.as_p}} -->
 
-        <button type = 'submit' > Create profile</button>
+        <button type = 'submit' > Edit profile</button>
     </form>
 </div>
 {% else %}
-<p> The profile was created</p>
+<p> The profile was edited</p>
 <a href = '{{student_obj.id}}/'> view profile</a>
 {% endif %}
-
-
-{%endblock content%}
+{%endblock content %}

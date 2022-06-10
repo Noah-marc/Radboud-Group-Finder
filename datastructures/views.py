@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from .models import Profile, Group, Membership
 from django.contrib.auth.models import User
+from .forms import ProfileCreationForm
 
 # Create your views here. bruh
 @login_required
@@ -48,12 +49,47 @@ def profile_create_view(request):
         studyProgram = request.POST.get("Study program")
         gender = request.POST.get("Gender")
         age = request.POST.get("Age")
-        profileCreated = True
-        student = Profile.objects.create(user = user, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age, profileCreated = profileCreated)
+        student = Profile.objects.create(user = user, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
         context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
         context ['created'] = True
         return redirect("/")
     return render(request, "create-profile.html", context=context) 
+
+def profile_edit_view(request): 
+    context = {}
+    if request.method == "POST":
+        try:
+            current_user = get_user(request)
+            get_object_or_404(Profile, user=current_user)
+        except:
+            return redirect("/profiles/details/create/")
+        student_obj = get_object_or_404(Profile, user=current_user) 
+        student_obj.studentNumber = request.POST.get("Student Number")
+        student_obj.studyProgram = request.POST.get("Study program")
+        student_obj.gender = request.POST.get("Gender")
+        student_obj.age = request.POST.get("Age")
+        student_obj.save()
+        # Her eneeds to come the actuall passing of the data. Does  "student_obj = get_object_or_404(Profile, user= current_user)" work, such that it has similar context as "t = TemperatureData.objects.get(id=1)" (in regards to what it does generally)
+        return redirect("/")    
+    return render (request, "profiles/edit-profile.html", context = context )
+
+
+# def profile_create_view(request): 
+#     form = ProfileCreationForm(request.POST or None) 
+#     context = {
+#         "form": form
+#     }
+#     if request.method == "POST":
+#         user = get_user(request)
+#         firstName = get_user(request).first_name
+#         lastName = get_user(request).last_name
+#         if form.is_valid: 
+#             student_obj = form.save()
+#             context["form"] = ProfileCreationForm()
+#         return  redirect("/")
+#     return render(request, "create-profile.html", context = context )
+
+
 
 @login_required
 def groups_overview_view(request, *args, **kwargs):
@@ -122,5 +158,3 @@ def join_view(request, id):
     else:
         context = {}
     return render(request, "groups/groups_details_view.html", context=context)
-
-

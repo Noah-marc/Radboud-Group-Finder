@@ -5,18 +5,18 @@
     <div class = "group_view_details">
         <img class="group_view_img" src="{% static 'img/group_bg.png' %}">
         <div class="group_view_name">{{group_obj.groupName}}</div>
-        <p>{{group_obj.course}}</p>
-        <p>{{group_obj.membership_set.all.count}}/{{group_obj.groupSize}}</p>
+            <p>{{group_obj.course}}</p>
+            <p>{{group_obj.membership_set.all.count}}/{{group_obj.groupSize}}</p>
         <div class="group_view_description">
-                <h1>Description</h1> 
-                <p>{{group_obj.groupDescription}}</p>
+            <h1>Description</h1> 
+            <p>{{group_obj.groupDescription}}</p>
         </div>
         {% if membership.isOwner %}
         <a style="margin-left: 542px" href="delete"> <button>Delete</button></a>
         {% endif %}
     </div>
     <div class = "group_view_members">    
-    <h1>Members</h1>
+        <h1>Members</h1>
         {% for membership in group_obj.membership_set.all %}
             <div class="member">
                 {{ membership.profile.firstName }} {{ membership.profile.lastName }}

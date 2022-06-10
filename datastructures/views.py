@@ -78,24 +78,6 @@ def profile_edit_view(request):
         return redirect("/")    
     return render (request, "profiles/edit-profile.html", context = context )
 
-
-# def profile_create_view(request): 
-#     form = ProfileCreationForm(request.POST or None) 
-#     context = {
-#         "form": form
-#     }
-#     if request.method == "POST":
-#         user = get_user(request)
-#         firstName = get_user(request).first_name
-#         lastName = get_user(request).last_name
-#         if form.is_valid: 
-#             student_obj = form.save()
-#             context["form"] = ProfileCreationForm()
-#         return  redirect("/")
-#     return render(request, "create-profile.html", context = context )
-
-
-
 @login_required
 def groups_overview_view(request, *args, **kwargs):
     groups_queryset = Group.objects.all()

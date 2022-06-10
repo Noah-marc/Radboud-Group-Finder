@@ -19,8 +19,8 @@
                 <a class = "notif" href="#">
                     <!-- <img src="{% static 'img/notif_logo.png' %}"> -->
                 </a>
-                <a  href="#"><img class = "user_logo" src="{% static 'img/account_img.png' %}" alt="profile pic"></a>
-                <a class = "user_name" href="#">{{user.first_name}} {{user.last_name}}</a>
+                <a  href="/profiles/edit"><img class = "user_logo" src="{% static 'img/account_img.png' %}" alt="profile pic"></a>
+                <a class = "user_name" href="/profiles/edit">{{user.first_name}} {{user.last_name}}</a>
         </div>
 
         <div class="grid-container">
@@ -28,10 +28,10 @@
                 <img class = "sidebar_logo" src="{% static 'img/logo_white.png' %}">
                 <a href="/">Home</a>
                 <a href="/groups">Groups </a>
-                <a href="/profiles">People</a>
+                <a href="/profiles">Students</a>
                 <a href="#">Settings&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   </a>
                 
-                <a style="position:absolute; bottom: 100px; width: 90%" href="/logout">Logout</a>
+                <a style="position:absolute; top: 830px; width: 90%" href="/logout">Logout</a>
                 </div>
             <div class="main-content">
                 {% block content %}

@@ -50,7 +50,9 @@ def profile_create_view(request):
         studyProgram = request.POST.get("Study program")
         gender = request.POST.get("Gender")
         age = request.POST.get("Age")
-        student = Profile.objects.create(user = user, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
+        course = request.POST.get("Course")
+        description = request.POST.get("Description")
+        student = Profile.objects.create(user = user, description = description, course = course, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
         context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
         context ['created'] = True
         return redirect("/")
@@ -69,8 +71,9 @@ def profile_edit_view(request):
         student_obj.studyProgram = request.POST.get("Study program")
         student_obj.gender = request.POST.get("Gender")
         student_obj.age = request.POST.get("Age")
+        student_obj.description = request.POST.get("Description")
         student_obj.save()
-        # Her eneeds to come the actuall passing of the data. Does  "student_obj = get_object_or_404(Profile, user= current_user)" work, such that it has similar context as "t = TemperatureData.objects.get(id=1)" (in regards to what it does generally)
+        # Here needs to come the actual passing of the data. Does "student_obj = get_object_or_404(Profile, user= current_user)" work, such that it has similar context as "t = TemperatureData.objects.get(id=1)" (in regards to what it does generally)
         return redirect("/")    
     return render (request, "profiles/edit-profile.html", context = context )
 
@@ -126,7 +129,8 @@ def groups_create_view(request):
         groupName = request.POST.get("Group Name")
         course = request.POST.get("Group Course")
         groupSize = request.POST.get("Group Size")
-        group = Group.objects.create(groupName = groupName, course = course, groupSize = groupSize)
+        groupDescription = request.POST.get("Description")
+        group = Group.objects.create(groupName = groupName, course = course, groupSize = groupSize, groupDescription = groupDescription,)
         current_user = get_user(request)
         profile = get_object_or_404(Profile, user=current_user)
         group_joined = True

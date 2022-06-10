@@ -121,7 +121,7 @@ a div:active {
 .user_logo {
     height: 50px;
     position: absolute;
-    right: 213px;
+    right: 20px;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
@@ -138,11 +138,11 @@ a div:active {
     height: 20px;
     line-height: 20px;
     position: absolute;
-    right: 25px;
+    right: 85px;
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    width: 167px;
+    width: auto;
 }
 
 h1 {

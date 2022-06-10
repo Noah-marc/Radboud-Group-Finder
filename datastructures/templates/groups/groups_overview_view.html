@@ -4,10 +4,6 @@
 {% block content %}
 <div class="main_container">
 <h1>Find Group</h1>
-<form action = 'details/' method = 'GET' >
-    <input type = 'text' name ='query'/>
-    <input type = 'submit' />
-</form>
 <!-- <ul>{% for x in groups_obj_list %}
     <li>{{ x.groupName}}-{{x.course}}-{{x.groupSize}}-{{x.groupDescription}} <a href = 'details/{{x.id}}/'> view group</a></li>
     <ul>{% for membership in x.membership_set.all %}

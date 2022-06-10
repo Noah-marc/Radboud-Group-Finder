@@ -38,11 +38,6 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('login/', account_views.login_view), 
-    #Work over the profiles URLS with using redirect !
-    path('profiles/', views.profile_overview_view),
-    path('profiles/details/', views.profile_search_view ),
-    path('profiles/details/create/', views.profile_create_view),
-    path('profiles/details/<int:id>/', views.profile_details_view),
     #Work over profiles URLS with using redirect!
     path('logout/', account_views.logout_view),
     path('register/', account_views.register_view),

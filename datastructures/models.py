@@ -32,7 +32,7 @@ class Profile(models.Model):
     lastName = models.TextField(default="")
     studentNumber = models.TextField()
     studyProgram = MultiSelectField(choices = STUDYPROGRAM_CHOICES, default = "")
-    age = models.IntegerField()
+    age = models.IntegerField(null = True)
     class GenderType(models.TextChoices):
         MALE = "male", "male"
         Female = "fale", "fale"

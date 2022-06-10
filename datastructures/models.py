@@ -1,9 +1,5 @@
-import datetime
-from pyexpat import model
-from statistics import mode
-from tokenize import group
 from django.db import models
-from django.contrib.auth.models  import User
+from django.contrib.auth.models import User
 from multiselectfield import MultiSelectField
 
 

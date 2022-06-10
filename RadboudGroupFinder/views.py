@@ -1,7 +1,6 @@
 """
 views.py is for rendering html web pages
 """
-import profile
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.template.loader import render_to_string

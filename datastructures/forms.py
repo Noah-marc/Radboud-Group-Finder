@@ -1,27 +1,10 @@
-from socket import fromshare
-from unittest.util import _MAX_LENGTH
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import Profile
-from django.contrib.auth import get_user
-
-
 
 class ProfileCreationForm(forms.ModelForm):
-    # studentNumber = forms.CharField()
-    # STUDYPROGRAM_CHOICES = (
-    #     ("Computing Science", "Computing Science"),
-    #     ("Mathematics", "Mathematics"),
-    #     ("none", "none")
-    # )
-    # studyProgram = forms.MultipleChoiceField(choices = STUDYPROGRAM_CHOICES, 
-    #                                          initial = "none", 
-    #                                          required = True,
-    #                                          label = "Study Program"                                   
-    # )
-    # age = forms.IntegerField() # make age input as only Natural Numbers!
-    # gender = forms.CharField()
+
     class Meta: 
         model = Profile
         fields = ['studentNumber', 'studyProgram', 'age', 'gender']

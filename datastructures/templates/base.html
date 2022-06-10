@@ -16,10 +16,10 @@
                 <a href="/"><img class = "home_img" src="{% static 'img/logo_black.png' %}" alt="Radboud Logo"></a>
                 <a class = "home_btn" href="/">Radboud Group Finder</a>
                 <a class = "notif" href="#">
-                    <img src="{% static 'img/notif_logo.png' %}">
+                    <!-- <img src="{% static 'img/notif_logo.png' %}"> -->
                 </a>
                 <a  href="#"><img class = "user_logo" src="{% static 'img/account_img.png' %}" alt="profile pic"></a>
-                <a class = "user_name" href="#">Account</a>
+                <a class = "user_name" href="#">{{user.first_name}} {{user.last_name}}</a>
         </div>
 
         <div class="grid-container">
@@ -29,6 +29,8 @@
                 <a href="/groups">Groups </a>
                 <a href="/profiles">People</a>
                 <a href="#">Settings&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   </a>
+                
+                <a style="position:absolute; bottom: 100px; width: 90%" href="/logout">Logout</a>
                 </div>
             <div class="main-content">
                 {% block content %}

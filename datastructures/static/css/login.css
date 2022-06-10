@@ -113,7 +113,6 @@ input#id_password:focus {
     text-align: center;
 }
 
-
 input#id_username, input#id_password1, input#id_password2, input#id_last_name, input#id_first_name, input#id_email {
     border: none;
     border-radius: 20px;

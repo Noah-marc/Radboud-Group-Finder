@@ -12,16 +12,12 @@
                 {% csrf_token %}
                 <div class="username">{{form.username}}</div>
                 <div class="password">{{form.password}}</div>
-                <!-- {{form.as_p }} -->
                 <button type = 'submit'> Login</button>
             </form>
             <p style="font-size: 14px">Don't have an account yet? <a href = '/register/'> Register here </a>  </p>
         </div>
       
-        <!-- 
-            We opt to use some simple javascript because we are unable 
-            to change the HTML attributes for our built-in Django form
-        -->
+
         <script>
             var form_fields = document.getElementsByTagName('input')
             form_fields[1].placeholder='Username';

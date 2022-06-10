@@ -1,15 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import get_user
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
 
-from .models import COURSE_CHOICES, Profile, Group, Membership
-from django.contrib.auth.models import User
-from .forms import ProfileCreationForm
+from .models import Profile, Group, Membership
 
-# Create your views here. bruh
+# Create your views here. 
 @login_required
-def profile_details_view(request, id = None, *args, **kwargs): 
+def profile_details_view(request, id = None): 
     student = None
     if id is not None:
         student = Profile.objects.get(id = id)  
@@ -19,18 +16,17 @@ def profile_details_view(request, id = None, *args, **kwargs):
     return render(request, "profiles/profiles-details.html", context = context)
 
 @login_required
-def profile_overview_view(request, *args, **kwargs): #overview of all existitng profiles
+def profile_overview_view(request): 
     profile_queryset = Profile.objects.all()
     context = {
         "profile_obj_list": profile_queryset,
-        # "user": request.user
     }
     return render(request, "profiles/profiles-overview.html", context = context) 
 
 @login_required
 def profile_search_view(request):
-    query_dict = request.GET # this is a dictionary, although syntactically it does not look like a dict
-    query = query_dict.get("query") # <input type = 'text' name ='query'/>
+    query_dict = request.GET
+    query = query_dict.get("query")
     student= None
     if query is not None:
         student = Profile.objects.get(id = query) 
@@ -42,7 +38,6 @@ def profile_search_view(request):
 def profile_create_view(request): 
     context = {}
     if request.method == "POST": 
-        # user = User.objects.get(request.user_id) # van int -> user
         user = get_user(request)
         firstName = get_user(request).first_name
         lastName = get_user(request).last_name
@@ -54,7 +49,7 @@ def profile_create_view(request):
         course = request.POST.get("Course")
         description = request.POST.get("Description")
         student = Profile.objects.create(user = user, description = description, course = course, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
-        context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
+        context ['student_obj'] = student 
         context ['created'] = True
         return redirect("/")
     return render(request, "create-profile.html", context=context) 
@@ -74,12 +69,11 @@ def profile_edit_view(request):
         student_obj.age = request.POST.get("Age")
         student_obj.description = request.POST.get("Description")
         student_obj.save()
-        # Here needs to come the actual passing of the data. Does "student_obj = get_object_or_404(Profile, user= current_user)" work, such that it has similar context as "t = TemperatureData.objects.get(id=1)" (in regards to what it does generally)
         return redirect("/")    
     return render (request, "profiles/edit-profile.html", context = context )
 
 @login_required
-def groups_overview_view(request, *args, **kwargs):
+def groups_overview_view(request):
     groups_queryset = Group.objects.all()
     context = {
         "groups_obj_list" : groups_queryset,
@@ -87,7 +81,7 @@ def groups_overview_view(request, *args, **kwargs):
     return render(request, "groups/groups_overview_view.html", context=context)
 
 @login_required
-def groups_details_view(request, id, *args, **kwargs):
+def groups_details_view(request, id):
     group = get_object_or_404(Group, pk=id)
     membership = get_object_or_404(Membership, group = group)
     context = {

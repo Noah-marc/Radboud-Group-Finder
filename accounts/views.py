@@ -1,12 +1,12 @@
 from datastructures.models import Profile
 from datastructures.forms import RegisterUserForm
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login, logout, get_user
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth import  login, logout, get_user
+from django.contrib.auth.forms import AuthenticationForm
 from datastructures.forms import RegisterUserForm
 from django.contrib.auth.decorators import login_required
 
-# maybe use include 
+
 def login_view(request):
     if request.method == "POST": 
         form = AuthenticationForm(request, data = request.POST)
@@ -52,7 +52,4 @@ def edit_user_view(request):
         user.save()
     return render(request, "accounts/edit-user.html", context = context) 
 
-#def edit_profile(request): 
-    
 
-# Create your views here.

@@ -1,8 +1,17 @@
 .profile-group:hover {
     margin-top: 0px;
     margin-bottom: 20px;
-    background-color: #fff5f4;
+    /* background-color: #fff5f4; */
+    border: 3px solid #e3000b;
     /* transition: 300ms ease; */
+}
+
+.profile-group:hover .border {
+    border: 1px solid #e3000b;
+}
+
+.profile-group:hover svg {
+    fill: #e3000b;
 }
 
 .profile-group {
@@ -23,8 +32,13 @@
 
 .profile-group_img {
     padding-top: 30px;
+ 
     display: flex;
     justify-content: center;
+}
+
+.profile-group_img svg {
+    fill: #730E04;
 }
 
 .profile-group_name {
@@ -70,9 +84,9 @@
 
 .profile_desc_box {
     position: absolute;
-    height: 40%;
+    height: 43%;
     width: 100%;
-    bottom: 10px;
+    bottom: 0px;
 }
 
 .group_desc {

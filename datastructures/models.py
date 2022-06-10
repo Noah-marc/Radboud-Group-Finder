@@ -54,6 +54,7 @@ class Membership(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     group_joined = models.BooleanField(default=False)
+    isOwner = models.BooleanField(default=False)
     def __str__(self):
         return (self.group.__str__() + "-" + self.profile.__str__())
     def get_profile(self):

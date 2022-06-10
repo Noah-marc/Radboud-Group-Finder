@@ -3,7 +3,7 @@ from django.contrib.auth import get_user
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 
-from .models import Profile, Group, Membership
+from .models import COURSE_CHOICES, Profile, Group, Membership
 from django.contrib.auth.models import User
 from .forms import ProfileCreationForm
 
@@ -46,11 +46,12 @@ def profile_create_view(request):
         user = get_user(request)
         firstName = get_user(request).first_name
         lastName = get_user(request).last_name
+        course = request.POST.get("Course")
         studentNumber = request.POST.get("Student Number")
         studyProgram = request.POST.get("Study program")
         gender = request.POST.get("Gender")
         age = request.POST.get("Age")
-        student = Profile.objects.create(user = user, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
+        student = Profile.objects.create(user = user, course = course, firstName = firstName, lastName = lastName, studentNumber = studentNumber, studyProgram = studyProgram, gender = gender, age = age)
         context ['student_obj'] = student #this still leads to bugs because of the if statement: When method is GET student is not assigned
         context ['created'] = True
         return redirect("/")
@@ -111,9 +112,13 @@ def groups_details_view(request, id, *args, **kwargs):
 @login_required
 def groups_delete_view(request, id):
     group = get_object_or_404(Group, pk=id)
+    membership = get_object_or_404(Membership, group = group)
     if request.method == "POST":
-        group.delete()
-        return redirect("/groups")
+        if membership.isOwner == True:
+            group.delete()
+            return redirect("/groups")
+        else:
+            return redirect("/groups")
     context = {
         "object" : group
     }
@@ -130,7 +135,8 @@ def groups_create_view(request):
         current_user = get_user(request)
         profile = get_object_or_404(Profile, user=current_user)
         group_joined = True
-        owner = Membership.objects.create(profile = profile, group = group, group_joined = group_joined)
+        isOwner = True
+        owner = Membership.objects.create(profile = profile, group = group, group_joined = group_joined, isOwner = isOwner )
         context = {
             "group_obj" : group,
             "owner_obj" : owner,
@@ -147,7 +153,8 @@ def join_view(request, id):
     if request.method == "GET":
         if can_join(profile,group) == True:
             group_joined = True
-            membership = Membership.objects.create(profile = profile, group = group, group_joined = group_joined)
+            isOwner = False
+            membership = Membership.objects.create(profile = profile, group = group, group_joined = group_joined, isOwner = isOwner)
             context = {
                 "membership_obj" : membership
             }

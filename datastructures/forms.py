@@ -25,6 +25,7 @@ class ProfileCreationForm(forms.ModelForm):
     class Meta: 
         model = Profile
         fields = ['studentNumber', 'studyProgram', 'age', 'gender']
+    
 
 class RegisterUserForm (UserCreationForm):
     email = forms.EmailField(required= True, label='')
